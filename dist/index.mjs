@@ -123,7 +123,7 @@ var GitHubIcon = (props) => /* @__PURE__ */ jsxs2(
 // src/components/CATLink/CATLink.tsx
 import { jsx as jsx3, jsxs as jsxs3 } from "react/jsx-runtime";
 var link = cva2(
-  "flex font-code items-center  rounded-full gap-2 py-2 pr-2 pl-4 text-medium justify-between transition-all hover:scale-[1.02] hover:transition-all",
+  "flex font-code items-center  rounded-full gap-2 py-2 pr-2 pl-4 font-medium justify-between transition-all hover:scale-[1.02] hover:transition-all",
   {
     variants: {
       variant: {
