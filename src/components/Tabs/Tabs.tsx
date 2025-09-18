@@ -49,9 +49,15 @@ export interface TabsProps {
   tabList: string[];
   variant?: "primary" | "secondary";
   onTabChange?: (tab: string) => void;
+  className?: string;
 }
 
-export const Tabs: FC<TabsProps> = ({ tabList, variant, onTabChange }) => {
+export const Tabs: FC<TabsProps> = ({
+  tabList,
+  variant,
+  onTabChange,
+  className,
+}) => {
   const [active, setActive] = useState(tabList[0]);
 
   return (
@@ -61,7 +67,7 @@ export const Tabs: FC<TabsProps> = ({ tabList, variant, onTabChange }) => {
         setActive(val);
         onTabChange?.(val);
       }}
-      className="w-full"
+      className={className}
     >
       <BaseTabs.List className={listStyles({ variant })}>
         {/* floating indicator */}
