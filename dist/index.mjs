@@ -1276,7 +1276,12 @@ var indicatorStyles = cva3(
     }
   }
 );
-var Tabs2 = ({ tabList, variant, onTabChange }) => {
+var Tabs2 = ({
+  tabList,
+  variant,
+  onTabChange,
+  className
+}) => {
   const [active, setActive] = useState6(tabList[0]);
   return /* @__PURE__ */ jsx13(
     Root2,
@@ -1286,7 +1291,7 @@ var Tabs2 = ({ tabList, variant, onTabChange }) => {
         setActive(val);
         onTabChange?.(val);
       },
-      className: "w-full",
+      className,
       children: /* @__PURE__ */ jsxs7(List, { className: listStyles({ variant }), children: [
         /* @__PURE__ */ jsx13(
           "span",

@@ -94,6 +94,7 @@ interface TabsProps {
     tabList: string[];
     variant?: "primary" | "secondary";
     onTabChange?: (tab: string) => void;
+    className?: string;
 }
 declare const Tabs: FC<TabsProps>;
 

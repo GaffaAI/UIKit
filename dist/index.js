@@ -1326,7 +1326,12 @@ var indicatorStyles = (0, import_class_variance_authority3.cva)(
     }
   }
 );
-var Tabs2 = ({ tabList, variant, onTabChange }) => {
+var Tabs2 = ({
+  tabList,
+  variant,
+  onTabChange,
+  className
+}) => {
   const [active, setActive] = (0, import_react4.useState)(tabList[0]);
   return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
     Root2,
@@ -1336,7 +1341,7 @@ var Tabs2 = ({ tabList, variant, onTabChange }) => {
         setActive(val);
         onTabChange?.(val);
       },
-      className: "w-full",
+      className,
       children: /* @__PURE__ */ (0, import_jsx_runtime14.jsxs)(List, { className: listStyles({ variant }), children: [
         /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
           "span",

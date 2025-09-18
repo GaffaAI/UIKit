@@ -435,6 +435,9 @@ video {
 .max-w-\[100px\] {
   max-width: 100px;
 }
+.max-w-\[200px\] {
+  max-width: 200px;
+}
 .max-w-\[600px\] {
   max-width: 600px;
 }
