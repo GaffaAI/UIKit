@@ -1,8 +1,7 @@
-import { ButtonHTMLAttributes, ElementType, FC } from "react";
+import { ButtonHTMLAttributes, FC } from "react";
 import { cva, VariantProps } from "class-variance-authority";
-
 const button = cva(
-  " rounded-lg  flex gap-2 justify-center items-center transition-all hover:scale-[1.02] hover:transition-all",
+  "rounded-lg font-code font-medium flex gap-2 justify-center items-center transition-all hover:scale-[1.02] hover:transition-all",
   {
     variants: {
       variant: {
@@ -58,7 +57,7 @@ export const Button: FC<ButtonProps> = ({
   return (
     <button
       {...props}
-      className={button({ variant, className, size })}
+      className={button({ variant, size, className })}
       disabled={props.isDisabled}
     >
       {startIcon && <span>{startIcon}</span>}

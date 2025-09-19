@@ -13,6 +13,6 @@ type Story = StoryObj<typeof Tabs>;
 export const Default: Story = {
   args: {
     tabList: ["Tab 1", "Tab 2", "Tab 3"],
-    className: "max-w-[200px]",
+    className: "max-w-[300px]",
   },
 };

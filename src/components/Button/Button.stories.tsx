@@ -17,6 +17,7 @@ export const Primary: Story = {
   args: {
     children: "Primary Button",
     variant: "primary",
+    className: "rounded-full",
   },
 };
 
