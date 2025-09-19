@@ -3,6 +3,7 @@ import * as RadixPopover from "@radix-ui/react-popover";
 import clsx from "clsx";
 
 export interface PopoverProps {
+  isOpen?: boolean;
   content: React.ReactNode;
   children: React.ReactNode;
   className?: string;
@@ -11,6 +12,7 @@ export interface PopoverProps {
 }
 
 export const Popover: React.FC<PopoverProps> = ({
+  isOpen,
   content,
   children,
   className,
@@ -18,7 +20,7 @@ export const Popover: React.FC<PopoverProps> = ({
   align = "center",
 }) => {
   return (
-    <RadixPopover.Root>
+    <RadixPopover.Root open={isOpen}>
       <RadixPopover.Trigger asChild>{children}</RadixPopover.Trigger>
       <RadixPopover.Portal>
         <RadixPopover.Content
