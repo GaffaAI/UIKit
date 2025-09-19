@@ -347,7 +347,7 @@ var SideCard = ({
   primaryLink,
   secondaryLink
 }) => {
-  const { isUpXL } = useBreakpoints();
+  const { isUpXL, isUpMD } = useBreakpoints();
   return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: clsx_default("flex flex-col rounded-2xl shadow-lg p-4", className), children: [
     /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex items-center gap-2 mb-4 md:mb-6", children: [
       icon,
@@ -356,10 +356,20 @@ var SideCard = ({
     ] }),
     /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("p", { className: "text-black-400", children: description }),
     /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex gap-2  flex-wrap mt-4 w-full md:grid md:grid-cols-[190px_190px]", children: [
-      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(CATLink, { variant: "primary", href: primaryLink.href, className: "w-full", children: primaryLink.label }),
       /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
         CATLink,
         {
+          variant: "primary",
+          href: primaryLink.href,
+          className: "w-full",
+          size: !isUpMD ? "m" : "s",
+          children: primaryLink.label
+        }
+      ),
+      /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(
+        CATLink,
+        {
+          size: !isUpMD ? "m" : "s",
           variant: "secondary",
           href: secondaryLink.href,
           className: "w-full",
