@@ -13,4 +13,5 @@ export * from "./components/Popover/Popover";
 export * from "./components/icons/Gaffa";
 export * from "./components/icons/GitHub";
 export * from "./hooks/useBreakpoints";
+export * from "lucide-react";
 import "./index.css";

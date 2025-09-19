@@ -17,6 +17,7 @@ var __copyProps = (to, from, except, desc) => {
   }
   return to;
 };
+var __reExport = (target, mod, secondTarget) => (__copyProps(target, mod, "default"), secondTarget && __copyProps(secondTarget, mod, "default"));
 var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
   // If the importer is in node compatibility mode or this is not an ESM
   // file that has been converted to a CommonJS file using a Babel-
@@ -6948,6 +6949,9 @@ var Popover = ({
     ) })
   ] });
 };
+
+// src/index.ts
+__reExport(index_exports, require("lucide-react"), module.exports);
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   BlogCard,
@@ -6964,5 +6968,6 @@ var Popover = ({
   Switch,
   Tabs,
   Tooltip,
-  useBreakpoints
+  useBreakpoints,
+  ...require("lucide-react")
 });
