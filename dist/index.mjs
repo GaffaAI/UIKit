@@ -184,35 +184,29 @@ function clsx() {
 var clsx_default = clsx;
 
 // src/hooks/useBreakpoints.tsx
-import { useState, useEffect } from "react";
-function useMediaQuery(query) {
-  const [isMatching, setIsMatching] = useState(false);
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const mql = window.matchMedia(query);
-    const updateMatch = () => setIsMatching(mql.matches);
-    updateMatch();
-    mql.addEventListener("change", updateMatch);
-    return () => mql.removeEventListener("change", updateMatch);
-  }, [query]);
-  return isMatching;
-}
-var BREAKPOINTS = {
-  sm: 640,
-  md: 768,
-  lg: 1024,
-  xl: 1280
-};
+import { useMediaQuery } from "react-responsive";
 var useBreakpoints = () => {
+  const isUpSM = useMediaQuery({ minWidth: 640 });
+  const isUpMD = useMediaQuery({ minWidth: 768 });
+  const isUpLG = useMediaQuery({ minWidth: 1024 });
+  const isUpXL = useMediaQuery({ minWidth: 1280 });
+  const isUp2XL = useMediaQuery({ minWidth: 1536 });
+  const isDownSM = useMediaQuery({ maxWidth: 639 });
+  const isDownMD = useMediaQuery({ maxWidth: 767 });
+  const isDownLG = useMediaQuery({ maxWidth: 1023 });
+  const isDownXL = useMediaQuery({ maxWidth: 1279 });
+  const isDown2XL = useMediaQuery({ maxWidth: 1535 });
   return {
-    isMobile: useMediaQuery(`(max-width: ${BREAKPOINTS.sm - 1}px)`),
-    isTablet: useMediaQuery(
-      `(min-width: ${BREAKPOINTS.sm}px) and (max-width: ${BREAKPOINTS.md - 1}px)`
-    ),
-    isLaptop: useMediaQuery(
-      `(min-width: ${BREAKPOINTS.md}px) and (max-width: ${BREAKPOINTS.lg - 1}px)`
-    ),
-    isDesktop: useMediaQuery(`(min-width: ${BREAKPOINTS.lg}px)`)
+    isUpSM,
+    isUpMD,
+    isUpLG,
+    isUpXL,
+    isUp2XL,
+    isDownSM,
+    isDownMD,
+    isDownLG,
+    isDownXL,
+    isDown2XL
   };
 };
 
@@ -302,7 +296,7 @@ var SideCard = ({
   primaryLink,
   secondaryLink
 }) => {
-  const { isDesktop } = useBreakpoints();
+  const { isUpXL } = useBreakpoints();
   return /* @__PURE__ */ jsxs6("div", { className: clsx_default("flex flex-col rounded-2xl shadow-lg p-4", className), children: [
     /* @__PURE__ */ jsxs6("div", { className: "flex items-center gap-2 mb-4 md:mb-6", children: [
       icon,
@@ -322,12 +316,12 @@ var SideCard = ({
         }
       )
     ] }),
-    !isDesktop && /* @__PURE__ */ jsx6(PoweredByGaffa, { className: "md:ml-auto mt-4" })
+    !isUpXL && /* @__PURE__ */ jsx6(PoweredByGaffa, { className: "md:ml-auto mt-4" })
   ] });
 };
 
 // src/components/Tabs/Tabs.tsx
-import { useState as useState6 } from "react";
+import { useState as useState5 } from "react";
 
 // node_modules/@radix-ui/react-tabs/dist/index.mjs
 import * as React12 from "react";
@@ -1282,7 +1276,7 @@ var Tabs2 = ({
   onTabChange,
   className
 }) => {
-  const [active, setActive] = useState6(tabList[0]);
+  const [active, setActive] = useState5(tabList[0]);
   return /* @__PURE__ */ jsx13(
     Root2,
     {
@@ -4347,9 +4341,9 @@ function assignRef(ref, value) {
 }
 
 // node_modules/use-callback-ref/dist/es2015/useRef.js
-import { useState as useState13 } from "react";
+import { useState as useState12 } from "react";
 function useCallbackRef2(initialValue, callback) {
-  var ref = useState13(function() {
+  var ref = useState12(function() {
     return {
       // value
       value: initialValue,

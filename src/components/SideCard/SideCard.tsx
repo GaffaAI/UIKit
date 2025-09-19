@@ -19,7 +19,7 @@ export const SideCard: React.FC<SideCardProps> = ({
   primaryLink,
   secondaryLink,
 }) => {
-  const { isDesktop } = useBreakpoints();
+  const { isUpXL } = useBreakpoints();
   return (
     <div className={clsx("flex flex-col rounded-2xl shadow-lg p-4", className)}>
       <div className="flex items-center gap-2 mb-4 md:mb-6">
@@ -38,7 +38,7 @@ export const SideCard: React.FC<SideCardProps> = ({
           {secondaryLink.label}
         </CATLink>
       </div>
-      {!isDesktop && <PoweredByGaffa className="md:ml-auto mt-4" />}
+      {!isUpXL && <PoweredByGaffa className="md:ml-auto mt-4" />}
     </div>
   );
 };

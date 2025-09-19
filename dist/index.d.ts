@@ -167,10 +167,16 @@ declare const Gaffa: (props: SVGProps<SVGSVGElement>) => react_jsx_runtime.JSX.E
 declare const GitHubIcon: (props: SVGProps<SVGSVGElement>) => react_jsx_runtime.JSX.Element;
 
 declare const useBreakpoints: () => {
-    isMobile: boolean;
-    isTablet: boolean;
-    isLaptop: boolean;
-    isDesktop: boolean;
+    isUpSM: boolean;
+    isUpMD: boolean;
+    isUpLG: boolean;
+    isUpXL: boolean;
+    isUp2XL: boolean;
+    isDownSM: boolean;
+    isDownMD: boolean;
+    isDownLG: boolean;
+    isDownXL: boolean;
+    isDown2XL: boolean;
 };
 
 export { BlogCard, type BlogCardProps, Button, CATLink, GAFFA_THEME, Gaffa, GitHubIcon, Input, type InputProps, Popover, type PopoverProps, PoweredByGaffa, type PoweredByGaffaProps, Select, type SelectOption, type SelectProps, SideCard, type SideCardProps, Switch, type SwitchProps, Tabs, type TabsProps, Tooltip, type TooltipProps, useBreakpoints };

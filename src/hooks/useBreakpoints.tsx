@@ -1,41 +1,29 @@
 "use client";
-
-import { useState, useEffect } from "react";
-
-function useMediaQuery(query: string) {
-  const [isMatching, setIsMatching] = useState(false);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const mql = window.matchMedia(query);
-    const updateMatch = () => setIsMatching(mql.matches);
-
-    updateMatch();
-    mql.addEventListener("change", updateMatch);
-    return () => mql.removeEventListener("change", updateMatch);
-  }, [query]);
-
-  return isMatching;
-}
-
-// Tailwind default breakpoints
-const BREAKPOINTS = {
-  sm: 640,
-  md: 768,
-  lg: 1024,
-  xl: 1280,
-};
+import { useMediaQuery } from "react-responsive";
 
 export const useBreakpoints = () => {
+  const isUpSM = useMediaQuery({ minWidth: 640 }); // sm
+  const isUpMD = useMediaQuery({ minWidth: 768 }); // md
+  const isUpLG = useMediaQuery({ minWidth: 1024 }); // lg
+  const isUpXL = useMediaQuery({ minWidth: 1280 }); // xl
+  const isUp2XL = useMediaQuery({ minWidth: 1536 }); // 2xl
+
+  const isDownSM = useMediaQuery({ maxWidth: 639 });
+  const isDownMD = useMediaQuery({ maxWidth: 767 });
+  const isDownLG = useMediaQuery({ maxWidth: 1023 });
+  const isDownXL = useMediaQuery({ maxWidth: 1279 });
+  const isDown2XL = useMediaQuery({ maxWidth: 1535 });
+
   return {
-    isMobile: useMediaQuery(`(max-width: ${BREAKPOINTS.sm - 1}px)`),
-    isTablet: useMediaQuery(
-      `(min-width: ${BREAKPOINTS.sm}px) and (max-width: ${BREAKPOINTS.md - 1}px)`,
-    ),
-    isLaptop: useMediaQuery(
-      `(min-width: ${BREAKPOINTS.md}px) and (max-width: ${BREAKPOINTS.lg - 1}px)`,
-    ),
-    isDesktop: useMediaQuery(`(min-width: ${BREAKPOINTS.lg}px)`),
+    isUpSM,
+    isUpMD,
+    isUpLG,
+    isUpXL,
+    isUp2XL,
+    isDownSM,
+    isDownMD,
+    isDownLG,
+    isDownXL,
+    isDown2XL,
   };
 };

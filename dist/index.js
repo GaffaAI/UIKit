@@ -234,35 +234,29 @@ function clsx() {
 var clsx_default = clsx;
 
 // src/hooks/useBreakpoints.tsx
-var import_react = require("react");
-function useMediaQuery(query) {
-  const [isMatching, setIsMatching] = (0, import_react.useState)(false);
-  (0, import_react.useEffect)(() => {
-    if (typeof window === "undefined") return;
-    const mql = window.matchMedia(query);
-    const updateMatch = () => setIsMatching(mql.matches);
-    updateMatch();
-    mql.addEventListener("change", updateMatch);
-    return () => mql.removeEventListener("change", updateMatch);
-  }, [query]);
-  return isMatching;
-}
-var BREAKPOINTS = {
-  sm: 640,
-  md: 768,
-  lg: 1024,
-  xl: 1280
-};
+var import_react_responsive = require("react-responsive");
 var useBreakpoints = () => {
+  const isUpSM = (0, import_react_responsive.useMediaQuery)({ minWidth: 640 });
+  const isUpMD = (0, import_react_responsive.useMediaQuery)({ minWidth: 768 });
+  const isUpLG = (0, import_react_responsive.useMediaQuery)({ minWidth: 1024 });
+  const isUpXL = (0, import_react_responsive.useMediaQuery)({ minWidth: 1280 });
+  const isUp2XL = (0, import_react_responsive.useMediaQuery)({ minWidth: 1536 });
+  const isDownSM = (0, import_react_responsive.useMediaQuery)({ maxWidth: 639 });
+  const isDownMD = (0, import_react_responsive.useMediaQuery)({ maxWidth: 767 });
+  const isDownLG = (0, import_react_responsive.useMediaQuery)({ maxWidth: 1023 });
+  const isDownXL = (0, import_react_responsive.useMediaQuery)({ maxWidth: 1279 });
+  const isDown2XL = (0, import_react_responsive.useMediaQuery)({ maxWidth: 1535 });
   return {
-    isMobile: useMediaQuery(`(max-width: ${BREAKPOINTS.sm - 1}px)`),
-    isTablet: useMediaQuery(
-      `(min-width: ${BREAKPOINTS.sm}px) and (max-width: ${BREAKPOINTS.md - 1}px)`
-    ),
-    isLaptop: useMediaQuery(
-      `(min-width: ${BREAKPOINTS.md}px) and (max-width: ${BREAKPOINTS.lg - 1}px)`
-    ),
-    isDesktop: useMediaQuery(`(min-width: ${BREAKPOINTS.lg}px)`)
+    isUpSM,
+    isUpMD,
+    isUpLG,
+    isUpXL,
+    isUp2XL,
+    isDownSM,
+    isDownMD,
+    isDownLG,
+    isDownXL,
+    isDown2XL
   };
 };
 
@@ -352,7 +346,7 @@ var SideCard = ({
   primaryLink,
   secondaryLink
 }) => {
-  const { isDesktop } = useBreakpoints();
+  const { isUpXL } = useBreakpoints();
   return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: clsx_default("flex flex-col rounded-2xl shadow-lg p-4", className), children: [
     /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex items-center gap-2 mb-4 md:mb-6", children: [
       icon,
@@ -372,12 +366,12 @@ var SideCard = ({
         }
       )
     ] }),
-    !isDesktop && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(PoweredByGaffa, { className: "md:ml-auto mt-4" })
+    !isUpXL && /* @__PURE__ */ (0, import_jsx_runtime6.jsx)(PoweredByGaffa, { className: "md:ml-auto mt-4" })
   ] });
 };
 
 // src/components/Tabs/Tabs.tsx
-var import_react4 = require("react");
+var import_react3 = require("react");
 
 // node_modules/@radix-ui/react-tabs/dist/index.mjs
 var React12 = __toESM(require("react"), 1);
@@ -458,7 +452,7 @@ function composeContextScopes(...scopes) {
 var React10 = __toESM(require("react"), 1);
 
 // node_modules/@radix-ui/react-collection/dist/index.mjs
-var import_react2 = __toESM(require("react"), 1);
+var import_react = __toESM(require("react"), 1);
 
 // node_modules/@radix-ui/react-compose-refs/dist/index.mjs
 var React2 = __toESM(require("react"), 1);
@@ -594,7 +588,7 @@ function getElementRef(element) {
 
 // node_modules/@radix-ui/react-collection/dist/index.mjs
 var import_jsx_runtime9 = require("react/jsx-runtime");
-var import_react3 = __toESM(require("react"), 1);
+var import_react2 = __toESM(require("react"), 1);
 var import_jsx_runtime10 = require("react/jsx-runtime");
 function createCollection(name) {
   const PROVIDER_NAME2 = name + "CollectionProvider";
@@ -605,14 +599,14 @@ function createCollection(name) {
   );
   const CollectionProvider = (props) => {
     const { scope, children } = props;
-    const ref = import_react2.default.useRef(null);
-    const itemMap = import_react2.default.useRef(/* @__PURE__ */ new Map()).current;
+    const ref = import_react.default.useRef(null);
+    const itemMap = import_react.default.useRef(/* @__PURE__ */ new Map()).current;
     return /* @__PURE__ */ (0, import_jsx_runtime9.jsx)(CollectionProviderImpl, { scope, itemMap, collectionRef: ref, children });
   };
   CollectionProvider.displayName = PROVIDER_NAME2;
   const COLLECTION_SLOT_NAME = name + "CollectionSlot";
   const CollectionSlotImpl = createSlot(COLLECTION_SLOT_NAME);
-  const CollectionSlot = import_react2.default.forwardRef(
+  const CollectionSlot = import_react.default.forwardRef(
     (props, forwardedRef) => {
       const { scope, children } = props;
       const context = useCollectionContext(COLLECTION_SLOT_NAME, scope);
@@ -624,13 +618,13 @@ function createCollection(name) {
   const ITEM_SLOT_NAME = name + "CollectionItemSlot";
   const ITEM_DATA_ATTR = "data-radix-collection-item";
   const CollectionItemSlotImpl = createSlot(ITEM_SLOT_NAME);
-  const CollectionItemSlot = import_react2.default.forwardRef(
+  const CollectionItemSlot = import_react.default.forwardRef(
     (props, forwardedRef) => {
       const { scope, children, ...itemData } = props;
-      const ref = import_react2.default.useRef(null);
+      const ref = import_react.default.useRef(null);
       const composedRefs = useComposedRefs(forwardedRef, ref);
       const context = useCollectionContext(ITEM_SLOT_NAME, scope);
-      import_react2.default.useEffect(() => {
+      import_react.default.useEffect(() => {
         context.itemMap.set(ref, { ref, ...itemData });
         return () => void context.itemMap.delete(ref);
       });
@@ -640,7 +634,7 @@ function createCollection(name) {
   CollectionItemSlot.displayName = ITEM_SLOT_NAME;
   function useCollection3(scope) {
     const context = useCollectionContext(name + "CollectionConsumer", scope);
-    const getItems = import_react2.default.useCallback(() => {
+    const getItems = import_react.default.useCallback(() => {
       const collectionNode = context.collectionRef.current;
       if (!collectionNode) return [];
       const orderedNodes = Array.from(collectionNode.querySelectorAll(`[${ITEM_DATA_ATTR}]`));
@@ -1332,7 +1326,7 @@ var Tabs2 = ({
   onTabChange,
   className
 }) => {
-  const [active, setActive] = (0, import_react4.useState)(tabList[0]);
+  const [active, setActive] = (0, import_react3.useState)(tabList[0]);
   return /* @__PURE__ */ (0, import_jsx_runtime14.jsx)(
     Root2,
     {
@@ -3540,12 +3534,12 @@ var computePosition2 = (reference, floating, options) => {
 
 // node_modules/@floating-ui/react-dom/dist/floating-ui.react-dom.mjs
 var React17 = __toESM(require("react"), 1);
-var import_react5 = require("react");
+var import_react4 = require("react");
 var ReactDOM = __toESM(require("react-dom"), 1);
 var isClient = typeof document !== "undefined";
 var noop = function noop2() {
 };
-var index = isClient ? import_react5.useLayoutEffect : noop;
+var index = isClient ? import_react4.useLayoutEffect : noop;
 function deepEqual(a, b) {
   if (a === b) {
     return true;
@@ -4397,9 +4391,9 @@ function assignRef(ref, value) {
 }
 
 // node_modules/use-callback-ref/dist/es2015/useRef.js
-var import_react6 = require("react");
+var import_react5 = require("react");
 function useCallbackRef2(initialValue, callback) {
-  var ref = (0, import_react6.useState)(function() {
+  var ref = (0, import_react5.useState)(function() {
     return {
       // value
       value: initialValue,
