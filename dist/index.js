@@ -354,7 +354,7 @@ var SideCard = ({
 }) => {
   const { isDesktop } = useBreakpoints();
   return /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: clsx_default("flex flex-col rounded-2xl shadow-lg p-4", className), children: [
-    /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex items-center gap-2 mb-6", children: [
+    /* @__PURE__ */ (0, import_jsx_runtime6.jsxs)("div", { className: "flex items-center gap-2 mb-4 md:mb-6", children: [
       icon,
       " ",
       /* @__PURE__ */ (0, import_jsx_runtime6.jsx)("p", { className: "text-2xl font-courier leading-[18px]", children: title })

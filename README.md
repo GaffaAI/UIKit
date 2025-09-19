@@ -69,6 +69,14 @@ To build the library for distribution:
 npm run build
 ```
 
+## Update
+
+To update use
+
+```bash
+ npm update @gaffaai/uikit
+```
+
 ## Contributing
 
 1. Fork the repository.

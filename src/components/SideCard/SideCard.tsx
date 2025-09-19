@@ -22,7 +22,7 @@ export const SideCard: React.FC<SideCardProps> = ({
   const { isDesktop } = useBreakpoints();
   return (
     <div className={clsx("flex flex-col rounded-2xl shadow-lg p-4", className)}>
-      <div className="flex items-center gap-2 mb-6">
+      <div className="flex items-center gap-2 mb-4 md:mb-6">
         {icon} <p className="text-2xl font-courier leading-[18px]">{title}</p>
       </div>
       <p className="text-black-400">{description}</p>
