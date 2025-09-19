@@ -155,6 +155,7 @@ interface TooltipProps {
 declare const Tooltip: React$1.FC<TooltipProps>;
 
 interface PopoverProps {
+    isOpen?: boolean;
     content: React$1.ReactNode;
     children: React$1.ReactNode;
     className?: string;

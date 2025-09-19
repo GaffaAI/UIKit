@@ -6927,13 +6927,14 @@ var Tooltip2 = ({
 var RadixPopover = __toESM(require("@radix-ui/react-popover"));
 var import_jsx_runtime29 = require("react/jsx-runtime");
 var Popover = ({
+  isOpen,
   content,
   children,
   className,
   side = "bottom",
   align = "center"
 }) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(RadixPopover.Root, { children: [
+  return /* @__PURE__ */ (0, import_jsx_runtime29.jsxs)(RadixPopover.Root, { open: isOpen, children: [
     /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(RadixPopover.Trigger, { asChild: true, children }),
     /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(RadixPopover.Portal, { children: /* @__PURE__ */ (0, import_jsx_runtime29.jsx)(
       RadixPopover.Content,
