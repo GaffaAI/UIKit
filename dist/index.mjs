@@ -1292,28 +1292,34 @@ var Tabs2 = ({
         onTabChange?.(val);
       },
       className,
-      children: /* @__PURE__ */ jsxs7(List, { className: listStyles({ variant }), children: [
-        /* @__PURE__ */ jsx13(
-          "span",
-          {
-            className: indicatorStyles({ variant }),
-            style: {
-              left: variant === "secondary" ? `calc(${tabList.indexOf(active) * (100 / tabList.length)}% + 4px)` : `${tabList.indexOf(active) * (100 / tabList.length)}%`,
-              width: variant === "secondary" ? `calc(${100 / tabList.length}% - 8px)` : `${100 / tabList.length}%`,
-              height: variant === "secondary" ? "calc(100% - 8px)" : "100%"
-            }
-          }
-        ),
-        tabList.map((tab) => /* @__PURE__ */ jsx13(
-          Trigger,
-          {
-            value: tab,
-            className: triggerStyles({ variant }),
-            children: tab
-          },
-          tab
-        ))
-      ] })
+      children: /* @__PURE__ */ jsxs7(
+        List,
+        {
+          className: listStyles({ variant }) + (className ? ` ${className}` : ""),
+          children: [
+            /* @__PURE__ */ jsx13(
+              "span",
+              {
+                className: indicatorStyles({ variant }),
+                style: {
+                  left: variant === "secondary" ? `calc(${tabList.indexOf(active) * (100 / tabList.length)}% + 4px)` : `${tabList.indexOf(active) * (100 / tabList.length)}%`,
+                  width: variant === "secondary" ? `calc(${100 / tabList.length}% - 8px)` : `${100 / tabList.length}%`,
+                  height: variant === "secondary" ? "calc(100% - 8px)" : "100%"
+                }
+              }
+            ),
+            tabList.map((tab) => /* @__PURE__ */ jsx13(
+              Trigger,
+              {
+                value: tab,
+                className: triggerStyles({ variant }),
+                children: tab
+              },
+              tab
+            ))
+          ]
+        }
+      )
     }
   );
 };

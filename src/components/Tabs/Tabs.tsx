@@ -69,7 +69,9 @@ export const Tabs: FC<TabsProps> = ({
       }}
       className={className}
     >
-      <BaseTabs.List className={listStyles({ variant })}>
+      <BaseTabs.List
+        className={listStyles({ variant }) + (className ? ` ${className}` : "")}
+      >
         {/* floating indicator */}
         <span
           className={indicatorStyles({ variant })}
