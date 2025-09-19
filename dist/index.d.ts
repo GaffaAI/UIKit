@@ -3,6 +3,7 @@ import * as React$1 from 'react';
 import React__default, { FC, ButtonHTMLAttributes, LinkHTMLAttributes, ReactNode, SVGProps } from 'react';
 import { VariantProps } from 'class-variance-authority';
 import * as react_jsx_runtime from 'react/jsx-runtime';
+export * from 'lucide-react';
 
 declare const GAFFA_THEME: {
     extend: {
