@@ -93,7 +93,7 @@ var GAFFA_THEME = {
 var import_class_variance_authority = require("class-variance-authority");
 var import_jsx_runtime = require("react/jsx-runtime");
 var button = (0, import_class_variance_authority.cva)(
-  " rounded-lg  flex gap-2 justify-center items-center transition-all hover:scale-[1.02] hover:transition-all",
+  "rounded-lg font-code font-medium flex gap-2 justify-center items-center transition-all hover:scale-[1.02] hover:transition-all",
   {
     variants: {
       variant: {
@@ -129,7 +129,7 @@ var Button = ({
     "button",
     {
       ...props,
-      className: button({ variant, className, size: size4 }),
+      className: button({ variant, size: size4, className }),
       disabled: props.isDisabled,
       children: [
         startIcon && /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { children: startIcon }),
