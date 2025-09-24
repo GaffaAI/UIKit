@@ -1400,7 +1400,13 @@ var Input = ({
           className
         ),
         children: [
-          startIcon && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: clsx_default("mr-2 text-black-400", error && "text-red"), children: startIcon }),
+          startIcon && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+            "span",
+            {
+              className: clsx_default("mr-2 ", error ? "text-red" : "text-black-400"),
+              children: startIcon
+            }
+          ),
           /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
             "input",
             {
@@ -1411,7 +1417,13 @@ var Input = ({
               ...props
             }
           ),
-          endIcon && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)("span", { className: clsx_default("ml-2 text-black-400", error && "text-red"), children: endIcon })
+          endIcon && /* @__PURE__ */ (0, import_jsx_runtime15.jsx)(
+            "span",
+            {
+              className: clsx_default("ml-2 ", error ? "text-red" : "text-black-400"),
+              children: endIcon
+            }
+          )
         ]
       }
     ),

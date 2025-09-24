@@ -1349,7 +1349,13 @@ var Input = ({
           className
         ),
         children: [
-          startIcon && /* @__PURE__ */ jsx14("span", { className: clsx_default("mr-2 text-black-400", error && "text-red"), children: startIcon }),
+          startIcon && /* @__PURE__ */ jsx14(
+            "span",
+            {
+              className: clsx_default("mr-2 ", error ? "text-red" : "text-black-400"),
+              children: startIcon
+            }
+          ),
           /* @__PURE__ */ jsx14(
             "input",
             {
@@ -1360,7 +1366,13 @@ var Input = ({
               ...props
             }
           ),
-          endIcon && /* @__PURE__ */ jsx14("span", { className: clsx_default("ml-2 text-black-400", error && "text-red"), children: endIcon })
+          endIcon && /* @__PURE__ */ jsx14(
+            "span",
+            {
+              className: clsx_default("ml-2 ", error ? "text-red" : "text-black-400"),
+              children: endIcon
+            }
+          )
         ]
       }
     ),
