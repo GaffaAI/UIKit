@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { Drawer } from "./Drawer";
+import { CustomDrawer } from "./Drawer";
 
 export default {
   title: "Components/Drawer",
-  component: Drawer,
+  component: CustomDrawer,
 };
 
 export const Default = () => {
@@ -17,7 +17,7 @@ export const Default = () => {
       >
         Open Drawer
       </button>
-      <Drawer isOpen={open} onClose={() => setOpen(false)}>
+      <CustomDrawer isOpen={open} onClose={() => setOpen(false)}>
         <div className="p-6">
           <h2 className="text-xl font-bold mb-2">Drawer Content</h2>
           <p>This is a sample drawer. Click outside to close.</p>
@@ -28,7 +28,7 @@ export const Default = () => {
             Close
           </button>
         </div>
-      </Drawer>
+      </CustomDrawer>
     </div>
   );
 };

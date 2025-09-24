@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Meta, StoryObj } from "@storybook/react";
-import { CodeEditor } from "./CodeEditor";
+import { CustomCodeEditor } from "./CustomCodeEditor";
 
-const meta: Meta<typeof CodeEditor> = {
+const meta: Meta<typeof CustomCodeEditor> = {
   title: "Components/CodeEditor",
-  component: CodeEditor,
+  component: CustomCodeEditor,
   argTypes: {
     value: { control: "text" },
     readOnly: { control: "boolean" },
@@ -15,7 +15,7 @@ const meta: Meta<typeof CodeEditor> = {
 };
 export default meta;
 
-type Story = StoryObj<typeof CodeEditor>;
+type Story = StoryObj<typeof CustomCodeEditor>;
 
 export const Default: Story = {
   args: {
@@ -53,7 +53,7 @@ export const Controlled: Story = {
     const [isValid, setIsValid] = useState(true);
     return (
       <div>
-        <CodeEditor
+        <CustomCodeEditor
           {...args}
           value={value}
           onChange={(val, valid) => {
@@ -106,5 +106,5 @@ def example_function():
     disableLint: true,
     language: "markdown",
   },
-  render: (args) => <CodeEditor {...args} />,
+  render: (args) => <CustomCodeEditor {...args} />,
 };

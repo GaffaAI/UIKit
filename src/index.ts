@@ -11,11 +11,8 @@ export * from "./components/Switch/Switch";
 export * from "./components/Tooltip/Tooltip";
 export * from "./components/Popover/Popover";
 export * from "./components/icons/Gaffa";
-import { CodeEditor } from "./components/CodeEditor/CodeEditor";
-import { Drawer } from "./components/Drawer/Drawer";
-
-export { CodeEditor, Drawer };
-
+export * from "./components/CustomCodeEditor/CustomCodeEditor";
+export * from "./components/CustomDrawer/Drawer";
 export * from "./components/icons/GitHub";
 export * from "./hooks/useBreakpoints";
 

@@ -1,14 +1,14 @@
 import React from "react";
 import clsx from "clsx";
 
-export interface DrawerProps {
+export interface CustomDrawerProps {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
   className?: string;
 }
 
-export const Drawer: React.FC<DrawerProps> = ({
+export const CustomDrawer: React.FC<CustomDrawerProps> = ({
   isOpen,
   onClose,
   children,

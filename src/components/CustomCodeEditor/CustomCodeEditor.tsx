@@ -29,7 +29,7 @@ export const hyperLink: Extension = [
   hyperLinkStyle,
 ];
 
-export const CodeEditor: React.FC<CodeEditorProps> = ({
+export const CustomCodeEditor: React.FC<CodeEditorProps> = ({
   value,
   onChange,
   readOnly = false,
