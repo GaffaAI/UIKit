@@ -30,7 +30,9 @@ export const Input: React.FC<InputProps> = ({
         )}
       >
         {startIcon && (
-          <span className={clsx("mr-2 text-black-400", error && "text-red")}>
+          <span
+            className={clsx("mr-2 ", error ? "text-red" : "text-black-400")}
+          >
             {startIcon}
           </span>
         )}
@@ -42,7 +44,9 @@ export const Input: React.FC<InputProps> = ({
           {...props}
         />
         {endIcon && (
-          <span className={clsx("ml-2 text-black-400", error && "text-red")}>
+          <span
+            className={clsx("ml-2 ", error ? "text-red" : "text-black-400")}
+          >
             {endIcon}
           </span>
         )}
