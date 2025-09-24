@@ -43,7 +43,7 @@ var GAFFA_THEME = {
 import { cva } from "class-variance-authority";
 import { jsx, jsxs } from "react/jsx-runtime";
 var button = cva(
-  "rounded-lg font-code font-medium flex gap-2 justify-center items-center transition-all hover:scale-[1.02] hover:transition-all",
+  "rounded-lg min-w-fit font-code font-medium flex gap-2 justify-center items-center transition-all hover:scale-[1.02] hover:transition-all",
   {
     variants: {
       variant: {
@@ -7141,6 +7141,7 @@ var Popover = ({
 
 // src/index.ts
 export * from "lucide-react";
+import * as toast from "react-hot-toast";
 export {
   BlogCard,
   Button,
@@ -7159,5 +7160,6 @@ export {
   Tabs2 as Tabs,
   Tooltip2 as Tooltip,
   hyperLink2 as hyperLink,
+  toast,
   useBreakpoints
 };

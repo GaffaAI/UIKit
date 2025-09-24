@@ -447,6 +447,10 @@ video {
 .w-full {
   width: 100%;
 }
+.min-w-fit {
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
 .max-w-\[100px\] {
   max-width: 100px;
 }

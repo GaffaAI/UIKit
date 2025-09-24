@@ -5,6 +5,8 @@ import { VariantProps } from 'class-variance-authority';
 import { Extension } from '@uiw/react-codemirror';
 import * as react_jsx_runtime from 'react/jsx-runtime';
 export * from 'lucide-react';
+import * as reactHotToast from 'react-hot-toast';
+export { reactHotToast as toast };
 
 declare const GAFFA_THEME: {
     extend: {

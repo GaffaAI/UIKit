@@ -21,3 +21,4 @@ export * from "./hooks/useBreakpoints";
 
 export * from "lucide-react";
 import "./index.css";
+export * as toast from "react-hot-toast";

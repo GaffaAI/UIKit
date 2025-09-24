@@ -48,6 +48,7 @@ __export(index_exports, {
   Tabs: () => Tabs2,
   Tooltip: () => Tooltip2,
   hyperLink: () => hyperLink2,
+  toast: () => toast,
   useBreakpoints: () => useBreakpoints
 });
 module.exports = __toCommonJS(index_exports);
@@ -97,7 +98,7 @@ var GAFFA_THEME = {
 var import_class_variance_authority = require("class-variance-authority");
 var import_jsx_runtime = require("react/jsx-runtime");
 var button = (0, import_class_variance_authority.cva)(
-  "rounded-lg font-code font-medium flex gap-2 justify-center items-center transition-all hover:scale-[1.02] hover:transition-all",
+  "rounded-lg min-w-fit font-code font-medium flex gap-2 justify-center items-center transition-all hover:scale-[1.02] hover:transition-all",
   {
     variants: {
       variant: {
@@ -7189,6 +7190,7 @@ var Popover = ({
 
 // src/index.ts
 __reExport(index_exports, require("lucide-react"), module.exports);
+var toast = __toESM(require("react-hot-toast"));
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   BlogCard,
@@ -7208,6 +7210,7 @@ __reExport(index_exports, require("lucide-react"), module.exports);
   Tabs,
   Tooltip,
   hyperLink,
+  toast,
   useBreakpoints,
   ...require("lucide-react")
 });

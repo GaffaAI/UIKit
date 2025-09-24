@@ -1,7 +1,7 @@
 import { ButtonHTMLAttributes, FC } from "react";
 import { cva, VariantProps } from "class-variance-authority";
 const button = cva(
-  "rounded-lg font-code font-medium flex gap-2 justify-center items-center transition-all hover:scale-[1.02] hover:transition-all",
+  "rounded-lg min-w-fit font-code font-medium flex gap-2 justify-center items-center transition-all hover:scale-[1.02] hover:transition-all",
   {
     variants: {
       variant: {
