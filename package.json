@@ -50,7 +50,6 @@
     "class-variance-authority": "^0.7.1",
     "lucide-react": "^0.544.0",
     "radix-ui": "^1.4.3",
-    "rc-drawer": "^7.3.0",
     "react-responsive": "^10.0.1"
   }
 }
