@@ -6922,49 +6922,7 @@ var Popover = ({
   ] });
 };
 
-// src/components/Drawer/Drawer.tsx
-import { jsx as jsx30, jsxs as jsxs17 } from "react/jsx-runtime";
-var Drawer = ({
-  isOpen,
-  onClose,
-  children,
-  className
-}) => {
-  return /* @__PURE__ */ jsxs17(
-    "div",
-    {
-      className: clsx_default(
-        "fixed inset-0 z-50 flex justify-end",
-        isOpen ? "pointer-events-auto" : "pointer-events-none"
-      ),
-      children: [
-        /* @__PURE__ */ jsx30(
-          "div",
-          {
-            className: clsx_default(
-              "absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300",
-              isOpen ? "opacity-100" : "opacity-0"
-            ),
-            onClick: onClose
-          }
-        ),
-        /* @__PURE__ */ jsx30(
-          "div",
-          {
-            className: clsx_default(
-              "relative w-80 max-w-full h-full bg-white shadow-xl transition-transform duration-300 ease-in-out rounded-l-[16px]",
-              isOpen ? "translate-x-0" : "translate-x-full",
-              className
-            ),
-            children
-          }
-        )
-      ]
-    }
-  );
-};
-
-// src/components/CodeEditor/index.tsx
+// src/components/CodeEditor/CodeEditor.tsx
 import { useEffect as useEffect19, useState as useState18 } from "react";
 import CodeMirror from "@uiw/react-codemirror";
 import { json, jsonParseLinter } from "@codemirror/lang-json";
@@ -7043,13 +7001,13 @@ var hyperLinkStyle = EditorView.baseTheme({
 });
 var hyperLink = [hyperLinkExtension(), hyperLinkStyle];
 
-// src/components/CodeEditor/index.tsx
+// src/components/CodeEditor/CodeEditor.tsx
 import { linter, lintGutter } from "@codemirror/lint";
 import { EditorView as EditorView2 } from "@codemirror/view";
 import { EditorState } from "@codemirror/state";
 import { markdown } from "@codemirror/lang-markdown";
 import { languages } from "@codemirror/language-data";
-import { jsx as jsx31 } from "react/jsx-runtime";
+import { jsx as jsx30 } from "react/jsx-runtime";
 var hyperLink2 = [
   hyperLinkExtension({
     regexp: /https?:\/\/[^\s"']+/gi,
@@ -7122,7 +7080,7 @@ var CodeEditor = ({
   if (readOnly) {
     extensions.push(EditorState.readOnly.of(true));
   }
-  return /* @__PURE__ */ jsx31(
+  return /* @__PURE__ */ jsx30(
     CodeMirror,
     {
       value: formattedValue,
@@ -7135,6 +7093,48 @@ var CodeEditor = ({
         foldGutter: showFoldGutter,
         tabSize: 2
       }
+    }
+  );
+};
+
+// src/components/Drawer/Drawer.tsx
+import { jsx as jsx31, jsxs as jsxs17 } from "react/jsx-runtime";
+var Drawer = ({
+  isOpen,
+  onClose,
+  children,
+  className
+}) => {
+  return /* @__PURE__ */ jsxs17(
+    "div",
+    {
+      className: clsx_default(
+        "fixed inset-0 z-50 flex justify-end",
+        isOpen ? "pointer-events-auto" : "pointer-events-none"
+      ),
+      children: [
+        /* @__PURE__ */ jsx31(
+          "div",
+          {
+            className: clsx_default(
+              "absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300",
+              isOpen ? "opacity-100" : "opacity-0"
+            ),
+            onClick: onClose
+          }
+        ),
+        /* @__PURE__ */ jsx31(
+          "div",
+          {
+            className: clsx_default(
+              "relative w-80 max-w-full h-full bg-white shadow-xl transition-transform duration-300 ease-in-out rounded-l-[16px]",
+              isOpen ? "translate-x-0" : "translate-x-full",
+              className
+            ),
+            children
+          }
+        )
+      ]
     }
   );
 };

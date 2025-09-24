@@ -6975,49 +6975,7 @@ var Popover = ({
   ] });
 };
 
-// src/components/Drawer/Drawer.tsx
-var import_jsx_runtime30 = require("react/jsx-runtime");
-var Drawer = ({
-  isOpen,
-  onClose,
-  children,
-  className
-}) => {
-  return /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(
-    "div",
-    {
-      className: clsx_default(
-        "fixed inset-0 z-50 flex justify-end",
-        isOpen ? "pointer-events-auto" : "pointer-events-none"
-      ),
-      children: [
-        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
-          "div",
-          {
-            className: clsx_default(
-              "absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300",
-              isOpen ? "opacity-100" : "opacity-0"
-            ),
-            onClick: onClose
-          }
-        ),
-        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
-          "div",
-          {
-            className: clsx_default(
-              "relative w-80 max-w-full h-full bg-white shadow-xl transition-transform duration-300 ease-in-out rounded-l-[16px]",
-              isOpen ? "translate-x-0" : "translate-x-full",
-              className
-            ),
-            children
-          }
-        )
-      ]
-    }
-  );
-};
-
-// src/components/CodeEditor/index.tsx
+// src/components/CodeEditor/CodeEditor.tsx
 var import_react6 = require("react");
 var import_react_codemirror = __toESM(require("@uiw/react-codemirror"));
 var import_lang_json = require("@codemirror/lang-json");
@@ -7090,13 +7048,13 @@ var hyperLinkStyle = import_view.EditorView.baseTheme({
 });
 var hyperLink = [hyperLinkExtension(), hyperLinkStyle];
 
-// src/components/CodeEditor/index.tsx
+// src/components/CodeEditor/CodeEditor.tsx
 var import_lint = require("@codemirror/lint");
 var import_view2 = require("@codemirror/view");
 var import_state = require("@codemirror/state");
 var import_lang_markdown = require("@codemirror/lang-markdown");
 var import_language_data = require("@codemirror/language-data");
-var import_jsx_runtime31 = require("react/jsx-runtime");
+var import_jsx_runtime30 = require("react/jsx-runtime");
 var hyperLink2 = [
   hyperLinkExtension({
     regexp: /https?:\/\/[^\s"']+/gi,
@@ -7169,7 +7127,7 @@ var CodeEditor = ({
   if (readOnly) {
     extensions.push(import_state.EditorState.readOnly.of(true));
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
+  return /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
     import_react_codemirror.default,
     {
       value: formattedValue,
@@ -7182,6 +7140,48 @@ var CodeEditor = ({
         foldGutter: showFoldGutter,
         tabSize: 2
       }
+    }
+  );
+};
+
+// src/components/Drawer/Drawer.tsx
+var import_jsx_runtime31 = require("react/jsx-runtime");
+var Drawer = ({
+  isOpen,
+  onClose,
+  children,
+  className
+}) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime31.jsxs)(
+    "div",
+    {
+      className: clsx_default(
+        "fixed inset-0 z-50 flex justify-end",
+        isOpen ? "pointer-events-auto" : "pointer-events-none"
+      ),
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
+          "div",
+          {
+            className: clsx_default(
+              "absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300",
+              isOpen ? "opacity-100" : "opacity-0"
+            ),
+            onClick: onClose
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
+          "div",
+          {
+            className: clsx_default(
+              "relative w-80 max-w-full h-full bg-white shadow-xl transition-transform duration-300 ease-in-out rounded-l-[16px]",
+              isOpen ? "translate-x-0" : "translate-x-full",
+              className
+            ),
+            children
+          }
+        )
+      ]
     }
   );
 };

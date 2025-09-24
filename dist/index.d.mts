@@ -166,6 +166,25 @@ declare const Popover: React$1.FC<PopoverProps>;
 
 declare const Gaffa: (props: SVGProps<SVGSVGElement>) => react_jsx_runtime.JSX.Element;
 
+interface CodeEditorProps {
+    value: string;
+    onChange?: (value: string, isValid: boolean) => void;
+    readOnly?: boolean;
+    showLineNumbers?: boolean;
+    showFoldGutter?: boolean;
+    disableLint?: boolean;
+    language?: "json" | "markdown";
+}
+declare const CodeEditor: React__default.FC<CodeEditorProps>;
+
+interface DrawerProps {
+    isOpen: boolean;
+    onClose: () => void;
+    children: React__default.ReactNode;
+    className?: string;
+}
+declare const Drawer: React__default.FC<DrawerProps>;
+
 declare const GitHubIcon: (props: SVGProps<SVGSVGElement>) => react_jsx_runtime.JSX.Element;
 
 declare const useBreakpoints: () => {
@@ -181,23 +200,4 @@ declare const useBreakpoints: () => {
     isDown2XL: boolean;
 };
 
-interface DrawerProps {
-    isOpen: boolean;
-    onClose: () => void;
-    children: React__default.ReactNode;
-    className?: string;
-}
-declare const Drawer: React__default.FC<DrawerProps>;
-
-interface CodeEditorProps {
-    value: string;
-    onChange?: (value: string, isValid: boolean) => void;
-    readOnly?: boolean;
-    showLineNumbers?: boolean;
-    showFoldGutter?: boolean;
-    disableLint?: boolean;
-    language?: "json" | "markdown";
-}
-declare const CodeEditor: React__default.FC<CodeEditorProps>;
-
-export { BlogCard, type BlogCardProps, Button, CATLink, CodeEditor, Drawer, type DrawerProps, GAFFA_THEME, Gaffa, GitHubIcon, Input, type InputProps, Popover, type PopoverProps, PoweredByGaffa, type PoweredByGaffaProps, Select, type SelectOption, type SelectProps, SideCard, type SideCardProps, Switch, type SwitchProps, Tabs, type TabsProps, Tooltip, type TooltipProps, useBreakpoints };
+export { BlogCard, type BlogCardProps, Button, CATLink, CodeEditor, Drawer, GAFFA_THEME, Gaffa, GitHubIcon, Input, type InputProps, Popover, type PopoverProps, PoweredByGaffa, type PoweredByGaffaProps, Select, type SelectOption, type SelectProps, SideCard, type SideCardProps, Switch, type SwitchProps, Tabs, type TabsProps, Tooltip, type TooltipProps, useBreakpoints };
