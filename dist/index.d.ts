@@ -3,7 +3,6 @@ import * as React$1 from 'react';
 import React__default, { FC, ButtonHTMLAttributes, LinkHTMLAttributes, ReactNode, SVGProps } from 'react';
 import { VariantProps } from 'class-variance-authority';
 import * as react_jsx_runtime from 'react/jsx-runtime';
-import { Extension } from '@uiw/react-codemirror';
 export * from 'lucide-react';
 
 declare const GAFFA_THEME: {
@@ -58,6 +57,25 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & VariantProps<typeof
     variant?: "primary" | "secondary" | "primaryOutline" | "secondaryOutline" | "text" | "textSecondary";
 };
 declare const Button: FC<ButtonProps>;
+
+interface CodeEditorProps {
+    value: string;
+    onChange?: (value: string, isValid: boolean) => void;
+    readOnly?: boolean;
+    showLineNumbers?: boolean;
+    showFoldGutter?: boolean;
+    disableLint?: boolean;
+    language?: "json" | "markdown";
+}
+declare const CustomCodeEditor: React__default.FC<CodeEditorProps>;
+
+interface CustomDrawerProps {
+    isOpen: boolean;
+    onClose: () => void;
+    children: React__default.ReactNode;
+    className?: string;
+}
+declare const CustomDrawer: React__default.FC<CustomDrawerProps>;
 
 declare const link: (props?: ({
     variant?: "primary" | "secondary" | "tertiary" | null | undefined;
@@ -167,26 +185,6 @@ declare const Popover: React$1.FC<PopoverProps>;
 
 declare const Gaffa: (props: SVGProps<SVGSVGElement>) => react_jsx_runtime.JSX.Element;
 
-interface CodeEditorProps {
-    value: string;
-    onChange?: (value: string, isValid: boolean) => void;
-    readOnly?: boolean;
-    showLineNumbers?: boolean;
-    showFoldGutter?: boolean;
-    disableLint?: boolean;
-    language?: "json" | "markdown";
-}
-declare const hyperLink: Extension;
-declare const CustomCodeEditor: React__default.FC<CodeEditorProps>;
-
-interface CustomDrawerProps {
-    isOpen: boolean;
-    onClose: () => void;
-    children: React__default.ReactNode;
-    className?: string;
-}
-declare const CustomDrawer: React__default.FC<CustomDrawerProps>;
-
 declare const GitHubIcon: (props: SVGProps<SVGSVGElement>) => react_jsx_runtime.JSX.Element;
 
 declare const useBreakpoints: () => {
@@ -202,4 +200,4 @@ declare const useBreakpoints: () => {
     isDown2XL: boolean;
 };
 
-export { BlogCard, type BlogCardProps, Button, CATLink, CustomCodeEditor, CustomDrawer, type CustomDrawerProps, GAFFA_THEME, Gaffa, GitHubIcon, Input, type InputProps, Popover, type PopoverProps, PoweredByGaffa, type PoweredByGaffaProps, Select, type SelectOption, type SelectProps, SideCard, type SideCardProps, Switch, type SwitchProps, Tabs, type TabsProps, Tooltip, type TooltipProps, hyperLink, useBreakpoints };
+export { BlogCard, type BlogCardProps, Button, CATLink, CustomCodeEditor as CodeEditor, CustomDrawer as Drawer, GAFFA_THEME, Gaffa, GitHubIcon, Input, type InputProps, Popover, type PopoverProps, PoweredByGaffa, type PoweredByGaffaProps, Select, type SelectOption, type SelectProps, SideCard, type SideCardProps, Switch, type SwitchProps, Tabs, type TabsProps, Tooltip, type TooltipProps, useBreakpoints };
