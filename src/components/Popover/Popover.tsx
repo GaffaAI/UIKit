@@ -27,7 +27,7 @@ export const Popover: React.FC<PopoverProps> = ({
           side={side}
           align={align}
           className={clsx(
-            "bg-white overflow-hidden rounded-lg shadow-lg border-accent-200 border-2 mt-2 z-50",
+            "bg-white overflow-hidden rounded-lg shadow-lg border-accent-200 border-2 mt-2 z-50 ring-0 focus:outline-none focus:ring-0 focus:ring-offset-0",
             className,
           )}
         >
