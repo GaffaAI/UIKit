@@ -40,3 +40,4 @@ export const CustomDrawer: React.FC<CustomDrawerProps> = ({
     </div>
   );
 };
+export default CustomDrawer;

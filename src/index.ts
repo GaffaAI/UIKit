@@ -1,5 +1,9 @@
 export * from "./theme";
 export * from "./components/Button/Button";
+
+export { default as CodeEditor } from "./components/CustomCodeEditor/CustomCodeEditor";
+export { default as Drawer } from "./components/CustomDrawer/Drawer";
+
 export * from "./components/CATLink/CATLink";
 export * from "./components/SideCard/SideCard";
 export * from "./components/PoweredByGaffa/PoweredByGaffa";
@@ -11,8 +15,7 @@ export * from "./components/Switch/Switch";
 export * from "./components/Tooltip/Tooltip";
 export * from "./components/Popover/Popover";
 export * from "./components/icons/Gaffa";
-export * from "./components/CustomCodeEditor/CustomCodeEditor";
-export * from "./components/CustomDrawer/Drawer";
+
 export * from "./components/icons/GitHub";
 export * from "./hooks/useBreakpoints";
 

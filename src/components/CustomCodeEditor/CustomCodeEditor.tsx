@@ -9,7 +9,6 @@ import { EditorState } from "@codemirror/state";
 
 import { markdown } from "@codemirror/lang-markdown";
 import { languages } from "@codemirror/language-data";
-// Removed unused import
 
 interface CodeEditorProps {
   value: string;
@@ -115,3 +114,4 @@ export const CustomCodeEditor: React.FC<CodeEditorProps> = ({
     />
   );
 };
+export default CustomCodeEditor;
