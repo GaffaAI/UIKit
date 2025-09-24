@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Drawer, DrawerProps } from "./Drawer";
+import { Drawer, DrawerProps } from ".";
 
 export default {
   title: "Components/Drawer",

@@ -6922,7 +6922,7 @@ var Popover = ({
   ] });
 };
 
-// src/components/Drawer/Drawer.tsx
+// src/components/Drawer/index.tsx
 import { jsx as jsx30, jsxs as jsxs17 } from "react/jsx-runtime";
 var Drawer = ({
   isOpen,

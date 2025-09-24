@@ -6976,7 +6976,7 @@ var Popover = ({
   ] });
 };
 
-// src/components/Drawer/Drawer.tsx
+// src/components/Drawer/index.tsx
 var import_jsx_runtime30 = require("react/jsx-runtime");
 var Drawer = ({
   isOpen,
