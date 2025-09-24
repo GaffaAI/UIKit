@@ -811,6 +811,10 @@ body {
   --tw-border-opacity: 1;
   border-color: rgb(172 238 202 / var(--tw-border-opacity));
 }
+.focus-within\:border-red:focus-within {
+  --tw-border-opacity: 1;
+  border-color: rgb(242 48 48 / var(--tw-border-opacity));
+}
 .hover\:scale-\[1\.02\]:hover {
   --tw-scale-x: 1.02;
   --tw-scale-y: 1.02;

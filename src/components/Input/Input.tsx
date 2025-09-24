@@ -25,11 +25,15 @@ export const Input: React.FC<InputProps> = ({
       <div
         className={clsx(
           "flex items-center border-2 rounded-lg px-3 py-2 bg-white focus-within:border-accent-200",
-          error ? "border-red" : "border-gray-300",
+          error ? "border-red focus-within:border-red" : "border-gray-300",
           className,
         )}
       >
-        {startIcon && <span className="mr-2 text-black-400">{startIcon}</span>}
+        {startIcon && (
+          <span className={clsx("mr-2 text-black-400", error && "text-red")}>
+            {startIcon}
+          </span>
+        )}
         <input
           className={clsx(
             "flex-1 outline-none bg-transparent text-black-400",
@@ -37,7 +41,11 @@ export const Input: React.FC<InputProps> = ({
           )}
           {...props}
         />
-        {endIcon && <span className="ml-2 text-black-400">{endIcon}</span>}
+        {endIcon && (
+          <span className={clsx("ml-2 text-black-400", error && "text-red")}>
+            {endIcon}
+          </span>
+        )}
       </div>
       {error && <span className="text-xs text-red mt-1">{error}</span>}
     </div>

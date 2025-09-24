@@ -1345,11 +1345,11 @@ var Input = ({
       {
         className: clsx_default(
           "flex items-center border-2 rounded-lg px-3 py-2 bg-white focus-within:border-accent-200",
-          error ? "border-red" : "border-gray-300",
+          error ? "border-red focus-within:border-red" : "border-gray-300",
           className
         ),
         children: [
-          startIcon && /* @__PURE__ */ jsx14("span", { className: "mr-2 text-black-400", children: startIcon }),
+          startIcon && /* @__PURE__ */ jsx14("span", { className: clsx_default("mr-2 text-black-400", error && "text-red"), children: startIcon }),
           /* @__PURE__ */ jsx14(
             "input",
             {
@@ -1360,7 +1360,7 @@ var Input = ({
               ...props
             }
           ),
-          endIcon && /* @__PURE__ */ jsx14("span", { className: "ml-2 text-black-400", children: endIcon })
+          endIcon && /* @__PURE__ */ jsx14("span", { className: clsx_default("ml-2 text-black-400", error && "text-red"), children: endIcon })
         ]
       }
     ),
