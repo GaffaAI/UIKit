@@ -3,6 +3,7 @@ import * as React$1 from 'react';
 import React__default, { FC, ButtonHTMLAttributes, LinkHTMLAttributes, ReactNode, SVGProps } from 'react';
 import { VariantProps } from 'class-variance-authority';
 import * as react_jsx_runtime from 'react/jsx-runtime';
+import { Extension } from '@uiw/react-codemirror';
 export * from 'lucide-react';
 
 declare const GAFFA_THEME: {
@@ -181,4 +182,24 @@ declare const useBreakpoints: () => {
     isDown2XL: boolean;
 };
 
-export { BlogCard, type BlogCardProps, Button, CATLink, GAFFA_THEME, Gaffa, GitHubIcon, Input, type InputProps, Popover, type PopoverProps, PoweredByGaffa, type PoweredByGaffaProps, Select, type SelectOption, type SelectProps, SideCard, type SideCardProps, Switch, type SwitchProps, Tabs, type TabsProps, Tooltip, type TooltipProps, useBreakpoints };
+interface DrawerProps {
+    isOpen: boolean;
+    onClose: () => void;
+    children: React__default.ReactNode;
+    className?: string;
+}
+declare const Drawer: React__default.FC<DrawerProps>;
+
+interface CodeEditorProps {
+    value: string;
+    onChange?: (value: string, isValid: boolean) => void;
+    readOnly?: boolean;
+    showLineNumbers?: boolean;
+    showFoldGutter?: boolean;
+    disableLint?: boolean;
+    language?: "json" | "markdown";
+}
+declare const hyperLink: Extension;
+declare const CodeEditor: React__default.FC<CodeEditorProps>;
+
+export { BlogCard, type BlogCardProps, Button, CATLink, CodeEditor, Drawer, type DrawerProps, GAFFA_THEME, Gaffa, GitHubIcon, Input, type InputProps, Popover, type PopoverProps, PoweredByGaffa, type PoweredByGaffaProps, Select, type SelectOption, type SelectProps, SideCard, type SideCardProps, Switch, type SwitchProps, Tabs, type TabsProps, Tooltip, type TooltipProps, hyperLink, useBreakpoints };

@@ -6922,12 +6922,231 @@ var Popover = ({
   ] });
 };
 
+// src/components/Drawer/Drawer.tsx
+import { jsx as jsx30, jsxs as jsxs17 } from "react/jsx-runtime";
+var Drawer = ({
+  isOpen,
+  onClose,
+  children,
+  className
+}) => {
+  return /* @__PURE__ */ jsxs17(
+    "div",
+    {
+      className: clsx_default(
+        "fixed inset-0 z-50 flex justify-end",
+        isOpen ? "pointer-events-auto" : "pointer-events-none"
+      ),
+      children: [
+        /* @__PURE__ */ jsx30(
+          "div",
+          {
+            className: clsx_default(
+              "absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300",
+              isOpen ? "opacity-100" : "opacity-0"
+            ),
+            onClick: onClose
+          }
+        ),
+        /* @__PURE__ */ jsx30(
+          "div",
+          {
+            className: clsx_default(
+              "relative w-80 max-w-full h-full bg-white shadow-xl transition-transform duration-300 ease-in-out rounded-l-[16px]",
+              isOpen ? "translate-x-0" : "translate-x-full",
+              className
+            ),
+            children
+          }
+        )
+      ]
+    }
+  );
+};
+
+// src/components/CodeEditor/index.tsx
+import { useEffect as useEffect19, useState as useState18 } from "react";
+import CodeMirror from "@uiw/react-codemirror";
+import { json, jsonParseLinter } from "@codemirror/lang-json";
+import { githubLight } from "@uiw/codemirror-theme-github";
+
+// src/components/CodeEditor/CustomCodeEditorLink.tsx
+import {
+  ViewPlugin,
+  EditorView,
+  Decoration,
+  MatchDecorator,
+  WidgetType
+} from "@codemirror/view";
+var defaultRegexp = /\b((?:https?|ftp):\/\/[^\s/$.?#].[^\s]*)\b/gi;
+var HyperLinkMark = class extends WidgetType {
+  constructor(state) {
+    super();
+    this.state = state;
+  }
+  eq(other) {
+    return this.state.url === other.state.url;
+  }
+  toDOM() {
+    const wrapper = document.createElement("a");
+    wrapper.href = this.state.url;
+    wrapper.target = "_blank";
+    wrapper.className = "cm-hyper-link";
+    wrapper.rel = "nofollow";
+    wrapper.textContent = this.state.url;
+    return wrapper;
+  }
+};
+var linkDecorator = (regexp, matchData, matchFn) => new MatchDecorator({
+  regexp: regexp || defaultRegexp,
+  decorate: (add, from, to, match) => {
+    const url = match[0];
+    let urlStr = matchFn && typeof matchFn === "function" ? matchFn(url, match.input, from, to) : url;
+    if (matchData && matchData[url]) {
+      urlStr = matchData[url];
+    }
+    const linkMark = new HyperLinkMark({ url: urlStr });
+    add(from, to, Decoration.replace({ widget: linkMark }));
+  }
+});
+function hyperLinkExtension({
+  regexp,
+  match,
+  handle
+} = {}) {
+  return ViewPlugin.fromClass(
+    class HyperLinkView {
+      constructor(view) {
+        this.decorator = linkDecorator(regexp, match, handle);
+        this.decorations = this.decorator.createDeco(view);
+      }
+      update(update) {
+        if (update.docChanged || update.viewportChanged) {
+          this.decorations = this.decorator.updateDeco(
+            update,
+            this.decorations
+          );
+        }
+      }
+    },
+    {
+      decorations: (v) => v.decorations
+    }
+  );
+}
+var hyperLinkStyle = EditorView.baseTheme({
+  ".cm-hyper-link": {
+    color: "#0000EE",
+    textDecoration: "underline",
+    cursor: "pointer"
+  }
+});
+var hyperLink = [hyperLinkExtension(), hyperLinkStyle];
+
+// src/components/CodeEditor/index.tsx
+import { linter, lintGutter } from "@codemirror/lint";
+import { EditorView as EditorView2 } from "@codemirror/view";
+import { EditorState } from "@codemirror/state";
+import { markdown } from "@codemirror/lang-markdown";
+import { languages } from "@codemirror/language-data";
+import { jsx as jsx31 } from "react/jsx-runtime";
+var hyperLink2 = [
+  hyperLinkExtension({
+    regexp: /https?:\/\/[^\s"']+/gi,
+    handle: (url) => url
+  }),
+  hyperLinkStyle
+];
+var CodeEditor = ({
+  value,
+  onChange,
+  readOnly = false,
+  showLineNumbers = true,
+  showFoldGutter = true,
+  disableLint = false,
+  language = "json"
+}) => {
+  const [mounted, setMounted] = useState18(false);
+  const [formattedValue, setFormattedValue] = useState18(value);
+  useEffect19(() => {
+    setMounted(true);
+    if (language === "json") {
+      try {
+        const parsed = JSON.parse(value);
+        setFormattedValue(JSON.stringify(parsed, null, 2));
+        if (onChange) {
+          onChange(JSON.stringify(parsed, null, 2), true);
+        }
+      } catch (error) {
+        setFormattedValue(value);
+        if (onChange) {
+          onChange(value, false);
+        }
+      }
+    } else {
+      setFormattedValue(value);
+      if (onChange) {
+        onChange(value, true);
+      }
+    }
+  }, [value, onChange, language]);
+  if (!mounted) {
+    return null;
+  }
+  const handleChange = (value2) => {
+    if (onChange) {
+      if (language === "json") {
+        try {
+          JSON.parse(value2);
+          onChange(value2, true);
+        } catch (error) {
+          onChange(value2, false);
+        }
+      } else {
+        onChange(value2, true);
+      }
+    }
+  };
+  const extensions = [hyperLink2, EditorView2.lineWrapping];
+  if (language === "json") {
+    extensions.unshift(json());
+    if (!disableLint) {
+      extensions.push(linter(jsonParseLinter()));
+    }
+    if (showFoldGutter) {
+      extensions.push(lintGutter());
+    }
+  } else if (language === "markdown") {
+    extensions.unshift(markdown({ codeLanguages: languages }));
+  }
+  if (readOnly) {
+    extensions.push(EditorState.readOnly.of(true));
+  }
+  return /* @__PURE__ */ jsx31(
+    CodeMirror,
+    {
+      value: formattedValue,
+      theme: githubLight,
+      extensions,
+      onChange: handleChange,
+      basicSetup: {
+        lineNumbers: showLineNumbers,
+        highlightActiveLine: !readOnly,
+        foldGutter: showFoldGutter,
+        tabSize: 2
+      }
+    }
+  );
+};
+
 // src/index.ts
 export * from "lucide-react";
 export {
   BlogCard,
   Button,
   CATLink,
+  CodeEditor,
+  Drawer,
   GAFFA_THEME,
   Gaffa,
   GitHubIcon,
@@ -6939,5 +7158,6 @@ export {
   Switch2 as Switch,
   Tabs2 as Tabs,
   Tooltip2 as Tooltip,
+  hyperLink2 as hyperLink,
   useBreakpoints
 };

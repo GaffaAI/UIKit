@@ -34,6 +34,8 @@ __export(index_exports, {
   BlogCard: () => BlogCard,
   Button: () => Button,
   CATLink: () => CATLink,
+  CodeEditor: () => CodeEditor,
+  Drawer: () => Drawer,
   GAFFA_THEME: () => GAFFA_THEME,
   Gaffa: () => Gaffa,
   GitHubIcon: () => GitHubIcon,
@@ -45,6 +47,7 @@ __export(index_exports, {
   Switch: () => Switch2,
   Tabs: () => Tabs2,
   Tooltip: () => Tooltip2,
+  hyperLink: () => hyperLink2,
   useBreakpoints: () => useBreakpoints
 });
 module.exports = __toCommonJS(index_exports);
@@ -6973,6 +6976,217 @@ var Popover = ({
   ] });
 };
 
+// src/components/Drawer/Drawer.tsx
+var import_jsx_runtime30 = require("react/jsx-runtime");
+var Drawer = ({
+  isOpen,
+  onClose,
+  children,
+  className
+}) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime30.jsxs)(
+    "div",
+    {
+      className: clsx_default(
+        "fixed inset-0 z-50 flex justify-end",
+        isOpen ? "pointer-events-auto" : "pointer-events-none"
+      ),
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+          "div",
+          {
+            className: clsx_default(
+              "absolute inset-0 bg-black bg-opacity-40 transition-opacity duration-300",
+              isOpen ? "opacity-100" : "opacity-0"
+            ),
+            onClick: onClose
+          }
+        ),
+        /* @__PURE__ */ (0, import_jsx_runtime30.jsx)(
+          "div",
+          {
+            className: clsx_default(
+              "relative w-80 max-w-full h-full bg-white shadow-xl transition-transform duration-300 ease-in-out rounded-l-[16px]",
+              isOpen ? "translate-x-0" : "translate-x-full",
+              className
+            ),
+            children
+          }
+        )
+      ]
+    }
+  );
+};
+
+// src/components/CodeEditor/index.tsx
+var import_react6 = require("react");
+var import_react_codemirror = __toESM(require("@uiw/react-codemirror"));
+var import_lang_json = require("@codemirror/lang-json");
+var import_codemirror_theme_github = require("@uiw/codemirror-theme-github");
+
+// src/components/CodeEditor/CustomCodeEditorLink.tsx
+var import_view = require("@codemirror/view");
+var defaultRegexp = /\b((?:https?|ftp):\/\/[^\s/$.?#].[^\s]*)\b/gi;
+var HyperLinkMark = class extends import_view.WidgetType {
+  constructor(state) {
+    super();
+    this.state = state;
+  }
+  eq(other) {
+    return this.state.url === other.state.url;
+  }
+  toDOM() {
+    const wrapper = document.createElement("a");
+    wrapper.href = this.state.url;
+    wrapper.target = "_blank";
+    wrapper.className = "cm-hyper-link";
+    wrapper.rel = "nofollow";
+    wrapper.textContent = this.state.url;
+    return wrapper;
+  }
+};
+var linkDecorator = (regexp, matchData, matchFn) => new import_view.MatchDecorator({
+  regexp: regexp || defaultRegexp,
+  decorate: (add, from, to, match) => {
+    const url = match[0];
+    let urlStr = matchFn && typeof matchFn === "function" ? matchFn(url, match.input, from, to) : url;
+    if (matchData && matchData[url]) {
+      urlStr = matchData[url];
+    }
+    const linkMark = new HyperLinkMark({ url: urlStr });
+    add(from, to, import_view.Decoration.replace({ widget: linkMark }));
+  }
+});
+function hyperLinkExtension({
+  regexp,
+  match,
+  handle
+} = {}) {
+  return import_view.ViewPlugin.fromClass(
+    class HyperLinkView {
+      constructor(view) {
+        this.decorator = linkDecorator(regexp, match, handle);
+        this.decorations = this.decorator.createDeco(view);
+      }
+      update(update) {
+        if (update.docChanged || update.viewportChanged) {
+          this.decorations = this.decorator.updateDeco(
+            update,
+            this.decorations
+          );
+        }
+      }
+    },
+    {
+      decorations: (v) => v.decorations
+    }
+  );
+}
+var hyperLinkStyle = import_view.EditorView.baseTheme({
+  ".cm-hyper-link": {
+    color: "#0000EE",
+    textDecoration: "underline",
+    cursor: "pointer"
+  }
+});
+var hyperLink = [hyperLinkExtension(), hyperLinkStyle];
+
+// src/components/CodeEditor/index.tsx
+var import_lint = require("@codemirror/lint");
+var import_view2 = require("@codemirror/view");
+var import_state = require("@codemirror/state");
+var import_lang_markdown = require("@codemirror/lang-markdown");
+var import_language_data = require("@codemirror/language-data");
+var import_jsx_runtime31 = require("react/jsx-runtime");
+var hyperLink2 = [
+  hyperLinkExtension({
+    regexp: /https?:\/\/[^\s"']+/gi,
+    handle: (url) => url
+  }),
+  hyperLinkStyle
+];
+var CodeEditor = ({
+  value,
+  onChange,
+  readOnly = false,
+  showLineNumbers = true,
+  showFoldGutter = true,
+  disableLint = false,
+  language = "json"
+}) => {
+  const [mounted, setMounted] = (0, import_react6.useState)(false);
+  const [formattedValue, setFormattedValue] = (0, import_react6.useState)(value);
+  (0, import_react6.useEffect)(() => {
+    setMounted(true);
+    if (language === "json") {
+      try {
+        const parsed = JSON.parse(value);
+        setFormattedValue(JSON.stringify(parsed, null, 2));
+        if (onChange) {
+          onChange(JSON.stringify(parsed, null, 2), true);
+        }
+      } catch (error) {
+        setFormattedValue(value);
+        if (onChange) {
+          onChange(value, false);
+        }
+      }
+    } else {
+      setFormattedValue(value);
+      if (onChange) {
+        onChange(value, true);
+      }
+    }
+  }, [value, onChange, language]);
+  if (!mounted) {
+    return null;
+  }
+  const handleChange = (value2) => {
+    if (onChange) {
+      if (language === "json") {
+        try {
+          JSON.parse(value2);
+          onChange(value2, true);
+        } catch (error) {
+          onChange(value2, false);
+        }
+      } else {
+        onChange(value2, true);
+      }
+    }
+  };
+  const extensions = [hyperLink2, import_view2.EditorView.lineWrapping];
+  if (language === "json") {
+    extensions.unshift((0, import_lang_json.json)());
+    if (!disableLint) {
+      extensions.push((0, import_lint.linter)((0, import_lang_json.jsonParseLinter)()));
+    }
+    if (showFoldGutter) {
+      extensions.push((0, import_lint.lintGutter)());
+    }
+  } else if (language === "markdown") {
+    extensions.unshift((0, import_lang_markdown.markdown)({ codeLanguages: import_language_data.languages }));
+  }
+  if (readOnly) {
+    extensions.push(import_state.EditorState.readOnly.of(true));
+  }
+  return /* @__PURE__ */ (0, import_jsx_runtime31.jsx)(
+    import_react_codemirror.default,
+    {
+      value: formattedValue,
+      theme: import_codemirror_theme_github.githubLight,
+      extensions,
+      onChange: handleChange,
+      basicSetup: {
+        lineNumbers: showLineNumbers,
+        highlightActiveLine: !readOnly,
+        foldGutter: showFoldGutter,
+        tabSize: 2
+      }
+    }
+  );
+};
+
 // src/index.ts
 __reExport(index_exports, require("lucide-react"), module.exports);
 // Annotate the CommonJS export names for ESM import in node:
@@ -6980,6 +7194,8 @@ __reExport(index_exports, require("lucide-react"), module.exports);
   BlogCard,
   Button,
   CATLink,
+  CodeEditor,
+  Drawer,
   GAFFA_THEME,
   Gaffa,
   GitHubIcon,
@@ -6991,6 +7207,7 @@ __reExport(index_exports, require("lucide-react"), module.exports);
   Switch,
   Tabs,
   Tooltip,
+  hyperLink,
   useBreakpoints,
   ...require("lucide-react")
 });
