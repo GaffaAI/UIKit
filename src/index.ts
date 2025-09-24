@@ -1,8 +1,8 @@
 export * from "./theme";
 export * from "./components/Button/Button";
 
-export { default as CodeEditor } from "./components/CustomCodeEditor/CustomCodeEditor";
-export { default as Drawer } from "./components/CustomDrawer/Drawer";
+export * from "./components/CustomCodeEditor/CodeEditor";
+export * from "./components/Drawer/Drawer";
 
 export * from "./components/CATLink/CATLink";
 export * from "./components/SideCard/SideCard";

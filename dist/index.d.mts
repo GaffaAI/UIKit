@@ -2,6 +2,7 @@ import * as class_variance_authority_dist_types from 'class-variance-authority/d
 import * as React$1 from 'react';
 import React__default, { FC, ButtonHTMLAttributes, LinkHTMLAttributes, ReactNode, SVGProps } from 'react';
 import { VariantProps } from 'class-variance-authority';
+import { Extension } from '@uiw/react-codemirror';
 import * as react_jsx_runtime from 'react/jsx-runtime';
 export * from 'lucide-react';
 
@@ -67,15 +68,16 @@ interface CodeEditorProps {
     disableLint?: boolean;
     language?: "json" | "markdown";
 }
-declare const CustomCodeEditor: React__default.FC<CodeEditorProps>;
+declare const hyperLink: Extension;
+declare const CodeEditor: React__default.FC<CodeEditorProps>;
 
-interface CustomDrawerProps {
+interface DrawerProps {
     isOpen: boolean;
     onClose: () => void;
     children: React__default.ReactNode;
     className?: string;
 }
-declare const CustomDrawer: React__default.FC<CustomDrawerProps>;
+declare const Drawer: React__default.FC<DrawerProps>;
 
 declare const link: (props?: ({
     variant?: "primary" | "secondary" | "tertiary" | null | undefined;
@@ -200,4 +202,4 @@ declare const useBreakpoints: () => {
     isDown2XL: boolean;
 };
 
-export { BlogCard, type BlogCardProps, Button, CATLink, CustomCodeEditor as CodeEditor, CustomDrawer as Drawer, GAFFA_THEME, Gaffa, GitHubIcon, Input, type InputProps, Popover, type PopoverProps, PoweredByGaffa, type PoweredByGaffaProps, Select, type SelectOption, type SelectProps, SideCard, type SideCardProps, Switch, type SwitchProps, Tabs, type TabsProps, Tooltip, type TooltipProps, useBreakpoints };
+export { BlogCard, type BlogCardProps, Button, CATLink, CodeEditor, type CodeEditorProps, Drawer, type DrawerProps, GAFFA_THEME, Gaffa, GitHubIcon, Input, type InputProps, Popover, type PopoverProps, PoweredByGaffa, type PoweredByGaffaProps, Select, type SelectOption, type SelectProps, SideCard, type SideCardProps, Switch, type SwitchProps, Tabs, type TabsProps, Tooltip, type TooltipProps, hyperLink, useBreakpoints };

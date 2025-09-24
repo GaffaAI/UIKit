@@ -1,14 +1,14 @@
 import React from "react";
 import clsx from "clsx";
 
-export interface CustomDrawerProps {
+export interface DrawerProps {
   isOpen: boolean;
   onClose: () => void;
   children: React.ReactNode;
   className?: string;
 }
 
-export const CustomDrawer: React.FC<CustomDrawerProps> = ({
+export const Drawer: React.FC<DrawerProps> = ({
   isOpen,
   onClose,
   children,
@@ -40,4 +40,3 @@ export const CustomDrawer: React.FC<CustomDrawerProps> = ({
     </div>
   );
 };
-export default CustomDrawer;

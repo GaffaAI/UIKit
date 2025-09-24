@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import CodeMirror, { Extension } from "@uiw/react-codemirror";
 import { json, jsonParseLinter } from "@codemirror/lang-json";
 import { githubLight } from "@uiw/codemirror-theme-github";
-import { hyperLinkExtension, hyperLinkStyle } from "./CustomCodeEditorLink";
+import { hyperLinkExtension, hyperLinkStyle } from "./CodeEditorLink";
 import { linter, lintGutter } from "@codemirror/lint";
 import { EditorView } from "@codemirror/view";
 import { EditorState } from "@codemirror/state";
@@ -10,7 +10,7 @@ import { EditorState } from "@codemirror/state";
 import { markdown } from "@codemirror/lang-markdown";
 import { languages } from "@codemirror/language-data";
 
-interface CodeEditorProps {
+export interface CodeEditorProps {
   value: string;
   onChange?: (value: string, isValid: boolean) => void;
   readOnly?: boolean;
@@ -28,7 +28,7 @@ export const hyperLink: Extension = [
   hyperLinkStyle,
 ];
 
-export const CustomCodeEditor: React.FC<CodeEditorProps> = ({
+export const CodeEditor: React.FC<CodeEditorProps> = ({
   value,
   onChange,
   readOnly = false,
@@ -114,4 +114,3 @@ export const CustomCodeEditor: React.FC<CodeEditorProps> = ({
     />
   );
 };
-export default CustomCodeEditor;
