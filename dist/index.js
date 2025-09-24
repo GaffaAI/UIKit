@@ -47,7 +47,6 @@ __export(index_exports, {
   Switch: () => Switch2,
   Tabs: () => Tabs2,
   Tooltip: () => Tooltip2,
-  hyperLink: () => hyperLink2,
   useBreakpoints: () => useBreakpoints
 });
 module.exports = __toCommonJS(index_exports);
@@ -6976,7 +6975,7 @@ var Popover = ({
   ] });
 };
 
-// src/components/Drawer/index.tsx
+// src/components/Drawer/Drawer.tsx
 var import_jsx_runtime30 = require("react/jsx-runtime");
 var Drawer = ({
   isOpen,
@@ -7207,7 +7206,6 @@ __reExport(index_exports, require("lucide-react"), module.exports);
   Switch,
   Tabs,
   Tooltip,
-  hyperLink,
   useBreakpoints,
   ...require("lucide-react")
 });

@@ -6922,7 +6922,7 @@ var Popover = ({
   ] });
 };
 
-// src/components/Drawer/index.tsx
+// src/components/Drawer/Drawer.tsx
 import { jsx as jsx30, jsxs as jsxs17 } from "react/jsx-runtime";
 var Drawer = ({
   isOpen,
@@ -7158,6 +7158,5 @@ export {
   Switch2 as Switch,
   Tabs2 as Tabs,
   Tooltip2 as Tooltip,
-  hyperLink2 as hyperLink,
   useBreakpoints
 };

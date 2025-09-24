@@ -1,10 +1,10 @@
-import React, { useState } from "react";
-import { Drawer, DrawerProps } from ".";
+import { useState } from "react";
+import { Drawer } from "./Drawer";
 
 export default {
   title: "Components/Drawer",
   component: Drawer,
-} as { component: React.ComponentType<DrawerProps>; title: string };
+};
 
 export const Default = () => {
   const [open, setOpen] = useState(false);
