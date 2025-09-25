@@ -28,6 +28,7 @@ export const JSONEditor: Story = {
     showLineNumbers: true,
     showFoldGutter: true,
     disableLint: false,
+    copy: true,
   },
 };
 

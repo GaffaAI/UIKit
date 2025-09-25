@@ -69,6 +69,7 @@ interface CodeEditorProps {
     showFoldGutter?: boolean;
     disableLint?: boolean;
     language?: "json" | "markdown";
+    copy?: boolean;
 }
 declare const hyperLink: Extension;
 declare const CodeEditor: React__default.FC<CodeEditorProps>;

@@ -223,6 +223,7 @@ var hyperLink = [hyperLinkExtension(), hyperLinkStyle];
 var import_lint = require("@codemirror/lint");
 var import_view2 = require("@codemirror/view");
 var import_state = require("@codemirror/state");
+var import_lucide_react = require("lucide-react");
 var import_lang_markdown = require("@codemirror/lang-markdown");
 var import_language_data = require("@codemirror/language-data");
 var import_jsx_runtime2 = require("react/jsx-runtime");
@@ -240,7 +241,8 @@ var CodeEditor = ({
   showLineNumbers = true,
   showFoldGutter = true,
   disableLint = false,
-  language = "json"
+  language = "json",
+  copy = false
 }) => {
   const [mounted, setMounted] = (0, import_react.useState)(false);
   const [formattedValue, setFormattedValue] = (0, import_react.useState)(value);
@@ -298,21 +300,33 @@ var CodeEditor = ({
   if (readOnly) {
     extensions.push(import_state.EditorState.readOnly.of(true));
   }
-  return /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
-    import_react_codemirror.default,
-    {
-      value: formattedValue,
-      theme: import_codemirror_theme_github.githubLight,
-      extensions,
-      onChange: handleChange,
-      basicSetup: {
-        lineNumbers: showLineNumbers,
-        highlightActiveLine: !readOnly,
-        foldGutter: showFoldGutter,
-        tabSize: 2
+  return /* @__PURE__ */ (0, import_jsx_runtime2.jsxs)("div", { className: "relative", children: [
+    copy && /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+      import_lucide_react.Copy,
+      {
+        onClick: () => {
+          navigator.clipboard.writeText(formattedValue);
+        },
+        strokeWidth: 1.5,
+        className: "z-10 absolute top-2 right-2 cursor-pointer text-black-600 hover:text-black-500 w-6 h-6"
       }
-    }
-  );
+    ),
+    /* @__PURE__ */ (0, import_jsx_runtime2.jsx)(
+      import_react_codemirror.default,
+      {
+        value: formattedValue,
+        theme: import_codemirror_theme_github.githubLight,
+        extensions,
+        onChange: handleChange,
+        basicSetup: {
+          lineNumbers: showLineNumbers,
+          highlightActiveLine: !readOnly,
+          foldGutter: showFoldGutter,
+          tabSize: 2
+        }
+      }
+    )
+  ] });
 };
 
 // node_modules/clsx/dist/clsx.mjs
@@ -375,7 +389,7 @@ var Drawer = ({
 
 // src/components/CATLink/CATLink.tsx
 var import_class_variance_authority2 = require("class-variance-authority");
-var import_lucide_react = require("lucide-react");
+var import_lucide_react2 = require("lucide-react");
 
 // src/components/icons/GitHub.tsx
 var import_jsx_runtime4 = require("react/jsx-runtime");
@@ -426,7 +440,7 @@ var getIcon = (variant, size4, iconVariant) => {
   switch (variant) {
     case "primary":
       return iconVariant === "arrow" ? /* @__PURE__ */ (0, import_jsx_runtime5.jsx)(
-        import_lucide_react.ArrowUpRight,
+        import_lucide_react2.ArrowUpRight,
         {
           className: "bg-accent-400 rounded-full stroke-[1.5] " + (size4 === "m" ? "w-7 h-7  p-1" : "w-5 h-5 ")
         }
@@ -6420,7 +6434,7 @@ var ScrollUpButton = SelectScrollUpButton;
 var ScrollDownButton = SelectScrollDownButton;
 
 // src/components/Select/Select.tsx
-var import_lucide_react2 = require("lucide-react");
+var import_lucide_react3 = require("lucide-react");
 var import_jsx_runtime26 = require("react/jsx-runtime");
 var SelectItem2 = React36.forwardRef(({ children, value, disabled, selectedValue }, ref) => /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(
   Item2,
@@ -6461,12 +6475,12 @@ var Select2 = ({
           children: [
             icon && /* @__PURE__ */ (0, import_jsx_runtime26.jsx)("span", { className: "absolute left-3 text-gray-400", children: icon }),
             /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Value, { placeholder }),
-            /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Icon, { className: "ml-auto text-gray-400", children: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_lucide_react2.ChevronDown, { size: 20 }) })
+            /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Icon, { className: "ml-auto text-gray-400", children: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_lucide_react3.ChevronDown, { size: 20 }) })
           ]
         }
       ),
       /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Portal2, { children: /* @__PURE__ */ (0, import_jsx_runtime26.jsxs)(Content2, { className: "bg-white overflow-hidden rounded-lg shadow-lg  border-accent-200 border-2 mt-14  z-50", children: [
-        /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(ScrollUpButton, { className: "flex items-center justify-center h-8 text-gray-400", children: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_lucide_react2.ChevronUp, { size: 20 }) }),
+        /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(ScrollUpButton, { className: "flex items-center justify-center h-8 text-gray-400", children: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_lucide_react3.ChevronUp, { size: 20 }) }),
         /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(Viewport, { className: "", children: options.map((opt) => /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(
           SelectItem2,
           {
@@ -6477,7 +6491,7 @@ var Select2 = ({
           },
           opt.value
         )) }),
-        /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(ScrollDownButton, { className: "flex items-center justify-center h-8 text-gray-400", children: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_lucide_react2.ChevronDown, { size: 20 }) })
+        /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(ScrollDownButton, { className: "flex items-center justify-center h-8 text-gray-400", children: /* @__PURE__ */ (0, import_jsx_runtime26.jsx)(import_lucide_react3.ChevronDown, { size: 20 }) })
       ] }) })
     ] })
   ] });
@@ -6627,7 +6641,7 @@ function getState(checked) {
 }
 
 // src/components/Switch/Switch.tsx
-var import_lucide_react3 = require("lucide-react");
+var import_lucide_react4 = require("lucide-react");
 var import_jsx_runtime28 = require("react/jsx-runtime");
 var Switch2 = ({
   checked,
@@ -6648,7 +6662,7 @@ var Switch2 = ({
             onCheckedChange,
             disabled,
             className: "w-12 h-6 bg-black-200 rounded-full relative  data-[disabled]:bg-gray-200 data-[state=checked]:bg-accent-200 transition-colors duration-200 outline-none",
-            children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(SwitchThumb, { className: "flex items-center justify-center w-[18px] h-[18px] bg-black-300 data-[state=checked]:bg-white rounded-full  absolute top-[3px]  left-1 transition-transform duration-200 data-[state=checked]:translate-x-[22px]", children: checked ? /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_lucide_react3.Check, { className: " h-3 text-accent-400 m-auto", strokeWidth: 3 }) : /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_lucide_react3.X, { className: "text-black-200 ", size: 10 }) })
+            children: /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(SwitchThumb, { className: "flex items-center justify-center w-[18px] h-[18px] bg-black-300 data-[state=checked]:bg-white rounded-full  absolute top-[3px]  left-1 transition-transform duration-200 data-[state=checked]:translate-x-[22px]", children: checked ? /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_lucide_react4.Check, { className: " h-3 text-accent-400 m-auto", strokeWidth: 3 }) : /* @__PURE__ */ (0, import_jsx_runtime28.jsx)(import_lucide_react4.X, { className: "text-black-200 ", size: 10 }) })
           }
         ),
         label && /* @__PURE__ */ (0, import_jsx_runtime28.jsx)("span", { className: "ml-2 text-sm", children: label })

@@ -173,9 +173,10 @@ var hyperLink = [hyperLinkExtension(), hyperLinkStyle];
 import { linter, lintGutter } from "@codemirror/lint";
 import { EditorView as EditorView2 } from "@codemirror/view";
 import { EditorState } from "@codemirror/state";
+import { Copy } from "lucide-react";
 import { markdown } from "@codemirror/lang-markdown";
 import { languages } from "@codemirror/language-data";
-import { jsx as jsx2 } from "react/jsx-runtime";
+import { jsx as jsx2, jsxs as jsxs2 } from "react/jsx-runtime";
 var hyperLink2 = [
   hyperLinkExtension({
     regexp: /https?:\/\/[^\s"']+/gi,
@@ -190,7 +191,8 @@ var CodeEditor = ({
   showLineNumbers = true,
   showFoldGutter = true,
   disableLint = false,
-  language = "json"
+  language = "json",
+  copy = false
 }) => {
   const [mounted, setMounted] = useState(false);
   const [formattedValue, setFormattedValue] = useState(value);
@@ -248,21 +250,33 @@ var CodeEditor = ({
   if (readOnly) {
     extensions.push(EditorState.readOnly.of(true));
   }
-  return /* @__PURE__ */ jsx2(
-    CodeMirror,
-    {
-      value: formattedValue,
-      theme: githubLight,
-      extensions,
-      onChange: handleChange,
-      basicSetup: {
-        lineNumbers: showLineNumbers,
-        highlightActiveLine: !readOnly,
-        foldGutter: showFoldGutter,
-        tabSize: 2
+  return /* @__PURE__ */ jsxs2("div", { className: "relative", children: [
+    copy && /* @__PURE__ */ jsx2(
+      Copy,
+      {
+        onClick: () => {
+          navigator.clipboard.writeText(formattedValue);
+        },
+        strokeWidth: 1.5,
+        className: "z-10 absolute top-2 right-2 cursor-pointer text-black-600 hover:text-black-500 w-6 h-6"
       }
-    }
-  );
+    ),
+    /* @__PURE__ */ jsx2(
+      CodeMirror,
+      {
+        value: formattedValue,
+        theme: githubLight,
+        extensions,
+        onChange: handleChange,
+        basicSetup: {
+          lineNumbers: showLineNumbers,
+          highlightActiveLine: !readOnly,
+          foldGutter: showFoldGutter,
+          tabSize: 2
+        }
+      }
+    )
+  ] });
 };
 
 // node_modules/clsx/dist/clsx.mjs
@@ -282,14 +296,14 @@ function clsx() {
 var clsx_default = clsx;
 
 // src/components/Drawer/Drawer.tsx
-import { jsx as jsx3, jsxs as jsxs2 } from "react/jsx-runtime";
+import { jsx as jsx3, jsxs as jsxs3 } from "react/jsx-runtime";
 var Drawer = ({
   isOpen,
   onClose,
   children,
   className
 }) => {
-  return /* @__PURE__ */ jsxs2(
+  return /* @__PURE__ */ jsxs3(
     "div",
     {
       className: clsx_default(
@@ -328,8 +342,8 @@ import { cva as cva2 } from "class-variance-authority";
 import { ArrowUpRight } from "lucide-react";
 
 // src/components/icons/GitHub.tsx
-import { jsx as jsx4, jsxs as jsxs3 } from "react/jsx-runtime";
-var GitHubIcon = (props) => /* @__PURE__ */ jsxs3(
+import { jsx as jsx4, jsxs as jsxs4 } from "react/jsx-runtime";
+var GitHubIcon = (props) => /* @__PURE__ */ jsxs4(
   "svg",
   {
     width: "29",
@@ -354,7 +368,7 @@ var GitHubIcon = (props) => /* @__PURE__ */ jsxs3(
 );
 
 // src/components/CATLink/CATLink.tsx
-import { jsx as jsx5, jsxs as jsxs4 } from "react/jsx-runtime";
+import { jsx as jsx5, jsxs as jsxs5 } from "react/jsx-runtime";
 var link = cva2(
   "flex font-code items-center  rounded-full gap-2 py-2 pr-2 pl-4 font-medium justify-between transition-all hover:scale-[1.02] hover:transition-all",
   {
@@ -394,7 +408,7 @@ var CATLink = ({
   iconVariant = "arrow",
   ...props
 }) => {
-  return /* @__PURE__ */ jsxs4("a", { className: link({ variant, className, size: size4 }), ...props, children: [
+  return /* @__PURE__ */ jsxs5("a", { className: link({ variant, className, size: size4 }), ...props, children: [
     children,
     getIcon(variant, size4, iconVariant)
   ] });
@@ -428,8 +442,8 @@ var useBreakpoints = () => {
 };
 
 // src/components/icons/Gaffa.tsx
-import { jsx as jsx6, jsxs as jsxs5 } from "react/jsx-runtime";
-var Gaffa = (props) => /* @__PURE__ */ jsxs5(
+import { jsx as jsx6, jsxs as jsxs6 } from "react/jsx-runtime";
+var Gaffa = (props) => /* @__PURE__ */ jsxs6(
   "svg",
   {
     width: "113",
@@ -493,18 +507,18 @@ var Gaffa = (props) => /* @__PURE__ */ jsxs5(
 );
 
 // src/components/PoweredByGaffa/PoweredByGaffa.tsx
-import { jsx as jsx7, jsxs as jsxs6 } from "react/jsx-runtime";
+import { jsx as jsx7, jsxs as jsxs7 } from "react/jsx-runtime";
 var PoweredByGaffa = ({
   className
 }) => {
-  return /* @__PURE__ */ jsxs6("div", { className: clsx("flex flex-row items-end gap-2", className), children: [
+  return /* @__PURE__ */ jsxs7("div", { className: clsx("flex flex-row items-end gap-2", className), children: [
     /* @__PURE__ */ jsx7("p", { className: "text-black-400 text-xs uppercase mb-1", children: "Powered by" }),
     /* @__PURE__ */ jsx7(Gaffa, { className: "h-8" })
   ] });
 };
 
 // src/components/SideCard/SideCard.tsx
-import { jsx as jsx8, jsxs as jsxs7 } from "react/jsx-runtime";
+import { jsx as jsx8, jsxs as jsxs8 } from "react/jsx-runtime";
 var SideCard = ({
   title,
   description,
@@ -514,14 +528,14 @@ var SideCard = ({
   secondaryLink
 }) => {
   const { isUpXL, isUpMD } = useBreakpoints();
-  return /* @__PURE__ */ jsxs7("div", { className: clsx_default("flex flex-col rounded-2xl shadow-lg p-4", className), children: [
-    /* @__PURE__ */ jsxs7("div", { className: "flex items-center gap-2 mb-4 md:mb-6", children: [
+  return /* @__PURE__ */ jsxs8("div", { className: clsx_default("flex flex-col rounded-2xl shadow-lg p-4", className), children: [
+    /* @__PURE__ */ jsxs8("div", { className: "flex items-center gap-2 mb-4 md:mb-6", children: [
       icon,
       " ",
       /* @__PURE__ */ jsx8("p", { className: "text-2xl font-courier leading-[18px]", children: title })
     ] }),
     /* @__PURE__ */ jsx8("p", { className: "text-black-400", children: description }),
-    /* @__PURE__ */ jsxs7("div", { className: "flex gap-2  flex-wrap mt-4 w-full md:grid md:grid-cols-[190px_190px]", children: [
+    /* @__PURE__ */ jsxs8("div", { className: "flex gap-2  flex-wrap mt-4 w-full md:grid md:grid-cols-[190px_190px]", children: [
       /* @__PURE__ */ jsx8(
         CATLink,
         {
@@ -1457,7 +1471,7 @@ var Trigger = TabsTrigger;
 
 // src/components/Tabs/Tabs.tsx
 import { cva as cva3 } from "class-variance-authority";
-import { jsx as jsx15, jsxs as jsxs8 } from "react/jsx-runtime";
+import { jsx as jsx15, jsxs as jsxs9 } from "react/jsx-runtime";
 var triggerStyles = cva3(
   "relative z-10 flex w-1/2 items-center justify-center  cursor-pointer select-none transition-colors",
   {
@@ -1513,7 +1527,7 @@ var Tabs2 = ({
         onTabChange?.(val);
       },
       className,
-      children: /* @__PURE__ */ jsxs8(
+      children: /* @__PURE__ */ jsxs9(
         List,
         {
           className: listStyles({ variant }) + (className ? ` ${className}` : ""),
@@ -1546,7 +1560,7 @@ var Tabs2 = ({
 };
 
 // src/components/Input/Input.tsx
-import { jsx as jsx16, jsxs as jsxs9 } from "react/jsx-runtime";
+import { jsx as jsx16, jsxs as jsxs10 } from "react/jsx-runtime";
 var Input = ({
   label,
   startIcon,
@@ -1555,9 +1569,9 @@ var Input = ({
   className,
   ...props
 }) => {
-  return /* @__PURE__ */ jsxs9("div", { className: "flex flex-col gap-1", children: [
+  return /* @__PURE__ */ jsxs10("div", { className: "flex flex-col gap-1", children: [
     label && /* @__PURE__ */ jsx16("label", { className: "text-xs font-medium text-black-400", children: label }),
-    /* @__PURE__ */ jsxs9(
+    /* @__PURE__ */ jsxs10(
       "div",
       {
         className: clsx_default(
@@ -1598,7 +1612,7 @@ var Input = ({
 };
 
 // src/components/BlogCard/BlogCard.tsx
-import { jsx as jsx17, jsxs as jsxs10 } from "react/jsx-runtime";
+import { jsx as jsx17, jsxs as jsxs11 } from "react/jsx-runtime";
 var BlogCard = ({
   title,
   description,
@@ -1606,7 +1620,7 @@ var BlogCard = ({
   className,
   link: link2
 }) => {
-  return /* @__PURE__ */ jsxs10(
+  return /* @__PURE__ */ jsxs11(
     "div",
     {
       className: clsx_default(
@@ -1622,8 +1636,8 @@ var BlogCard = ({
             className: "w-full h-[198px] object-cover rounded-2xl md:w-[212px] md:h-[132px]"
           }
         ),
-        /* @__PURE__ */ jsxs10("div", { className: "flex flex-col gap-4  flex-1", children: [
-          /* @__PURE__ */ jsxs10("div", { className: "flex flex-col gap-2", children: [
+        /* @__PURE__ */ jsxs11("div", { className: "flex flex-col gap-4  flex-1", children: [
+          /* @__PURE__ */ jsxs11("div", { className: "flex flex-col gap-2", children: [
             /* @__PURE__ */ jsx17("h3", { className: "text-lg font-code font-semibold group-hover:text-accent-400 transition-colors", children: title }),
             /* @__PURE__ */ jsx17("p", { className: "text-black-400 text-sm", children: description })
           ] }),
@@ -5240,7 +5254,7 @@ ReactRemoveScroll.classNames = RemoveScroll.classNames;
 var Combination_default = ReactRemoveScroll;
 
 // node_modules/@radix-ui/react-select/dist/index.mjs
-import { Fragment as Fragment5, jsx as jsx25, jsxs as jsxs11 } from "react/jsx-runtime";
+import { Fragment as Fragment5, jsx as jsx25, jsxs as jsxs12 } from "react/jsx-runtime";
 var OPEN_KEYS = [" ", "Enter", "ArrowUp", "ArrowDown"];
 var SELECTION_KEYS = [" ", "Enter"];
 var SELECT_NAME = "Select";
@@ -5290,7 +5304,7 @@ var Select = (props) => {
   const isFormControl = trigger ? form || !!trigger.closest("form") : true;
   const [nativeOptionsSet, setNativeOptionsSet] = React35.useState(/* @__PURE__ */ new Set());
   const nativeSelectKey = Array.from(nativeOptionsSet).map((option) => option.props.value).join(";");
-  return /* @__PURE__ */ jsx25(Root22, { ...popperScope, children: /* @__PURE__ */ jsxs11(
+  return /* @__PURE__ */ jsx25(Root22, { ...popperScope, children: /* @__PURE__ */ jsxs12(
     SelectProvider,
     {
       required,
@@ -5327,7 +5341,7 @@ var Select = (props) => {
             children
           }
         ) }),
-        isFormControl ? /* @__PURE__ */ jsxs11(
+        isFormControl ? /* @__PURE__ */ jsxs12(
           SelectBubbleInput,
           {
             "aria-hidden": true,
@@ -5928,7 +5942,7 @@ var SelectViewport = React35.forwardRef(
     const viewportContext = useSelectViewportContext(VIEWPORT_NAME, __scopeSelect);
     const composedRefs = useComposedRefs(forwardedRef, contentContext.onViewportChange);
     const prevScrollTopRef = React35.useRef(0);
-    return /* @__PURE__ */ jsxs11(Fragment5, { children: [
+    return /* @__PURE__ */ jsxs12(Fragment5, { children: [
       /* @__PURE__ */ jsx25(
         "style",
         {
@@ -6135,7 +6149,7 @@ var SelectItemText = React35.forwardRef(
       onNativeOptionAdd(nativeOption);
       return () => onNativeOptionRemove(nativeOption);
     }, [onNativeOptionAdd, onNativeOptionRemove, nativeOption]);
-    return /* @__PURE__ */ jsxs11(Fragment5, { children: [
+    return /* @__PURE__ */ jsxs12(Fragment5, { children: [
       /* @__PURE__ */ jsx25(Primitive9.span, { id: itemContext.textId, ...itemTextProps, ref: composedRefs }),
       itemContext.isSelected && context.valueNode && !context.valueNodeHasChildren ? ReactDOM3.createPortal(itemTextProps.children, context.valueNode) : null
     ] });
@@ -6371,7 +6385,7 @@ var ScrollDownButton = SelectScrollDownButton;
 
 // src/components/Select/Select.tsx
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { jsx as jsx26, jsxs as jsxs12 } from "react/jsx-runtime";
+import { jsx as jsx26, jsxs as jsxs13 } from "react/jsx-runtime";
 var SelectItem2 = React36.forwardRef(({ children, value, disabled, selectedValue }, ref) => /* @__PURE__ */ jsx26(
   Item2,
   {
@@ -6396,10 +6410,10 @@ var Select2 = ({
   className,
   placeholder = "Select an option..."
 }) => {
-  return /* @__PURE__ */ jsxs12("div", { className: clsx_default("flex flex-col gap-1 w-full", className), children: [
+  return /* @__PURE__ */ jsxs13("div", { className: clsx_default("flex flex-col gap-1 w-full", className), children: [
     label && /* @__PURE__ */ jsx26("label", { className: "text-xs font-medium text-black-400", children: label }),
-    /* @__PURE__ */ jsxs12(Root23, { value, onValueChange, children: [
-      /* @__PURE__ */ jsxs12(
+    /* @__PURE__ */ jsxs13(Root23, { value, onValueChange, children: [
+      /* @__PURE__ */ jsxs13(
         Trigger2,
         {
           className: clsx_default(
@@ -6415,7 +6429,7 @@ var Select2 = ({
           ]
         }
       ),
-      /* @__PURE__ */ jsx26(Portal2, { children: /* @__PURE__ */ jsxs12(Content2, { className: "bg-white overflow-hidden rounded-lg shadow-lg  border-accent-200 border-2 mt-14  z-50", children: [
+      /* @__PURE__ */ jsx26(Portal2, { children: /* @__PURE__ */ jsxs13(Content2, { className: "bg-white overflow-hidden rounded-lg shadow-lg  border-accent-200 border-2 mt-14  z-50", children: [
         /* @__PURE__ */ jsx26(ScrollUpButton, { className: "flex items-center justify-center h-8 text-gray-400", children: /* @__PURE__ */ jsx26(ChevronUp, { size: 20 }) }),
         /* @__PURE__ */ jsx26(Viewport, { className: "", children: options.map((opt) => /* @__PURE__ */ jsx26(
           SelectItem2,
@@ -6436,7 +6450,7 @@ var Select2 = ({
 // node_modules/@radix-ui/react-switch/dist/index.mjs
 import * as React37 from "react";
 import { Primitive as Primitive10 } from "@radix-ui/react-primitive";
-import { jsx as jsx27, jsxs as jsxs13 } from "react/jsx-runtime";
+import { jsx as jsx27, jsxs as jsxs14 } from "react/jsx-runtime";
 var SWITCH_NAME = "Switch";
 var [createSwitchContext, createSwitchScope] = createContextScope(SWITCH_NAME);
 var [SwitchProvider, useSwitchContext] = createSwitchContext(SWITCH_NAME);
@@ -6464,7 +6478,7 @@ var Switch = React37.forwardRef(
       onChange: onCheckedChange,
       caller: SWITCH_NAME
     });
-    return /* @__PURE__ */ jsxs13(SwitchProvider, { scope: __scopeSwitch, checked, disabled, children: [
+    return /* @__PURE__ */ jsxs14(SwitchProvider, { scope: __scopeSwitch, checked, disabled, children: [
       /* @__PURE__ */ jsx27(
         Primitive10.button,
         {
@@ -6578,7 +6592,7 @@ function getState(checked) {
 
 // src/components/Switch/Switch.tsx
 import { Check, X } from "lucide-react";
-import { jsx as jsx28, jsxs as jsxs14 } from "react/jsx-runtime";
+import { jsx as jsx28, jsxs as jsxs15 } from "react/jsx-runtime";
 var Switch2 = ({
   checked,
   onCheckedChange,
@@ -6586,7 +6600,7 @@ var Switch2 = ({
   label,
   className
 }) => {
-  return /* @__PURE__ */ jsxs14(
+  return /* @__PURE__ */ jsxs15(
     "label",
     {
       className: `inline-flex items-center cursor-pointer ${className ?? ""}`,
@@ -6610,7 +6624,7 @@ var Switch2 = ({
 // node_modules/@radix-ui/react-tooltip/dist/index.mjs
 import * as React38 from "react";
 import { Primitive as Primitive11 } from "@radix-ui/react-primitive";
-import { jsx as jsx29, jsxs as jsxs15 } from "react/jsx-runtime";
+import { jsx as jsx29, jsxs as jsxs16 } from "react/jsx-runtime";
 var [createTooltipContext, createTooltipScope] = createContextScope("Tooltip", [
   createPopperScope
 ]);
@@ -6922,7 +6936,7 @@ var TooltipContentImpl = React38.forwardRef(
         onPointerDownOutside,
         onFocusOutside: (event) => event.preventDefault(),
         onDismiss: onClose,
-        children: /* @__PURE__ */ jsxs15(
+        children: /* @__PURE__ */ jsxs16(
           Content,
           {
             "data-state": context.stateAttribute,
@@ -7086,7 +7100,7 @@ var Portal3 = TooltipPortal;
 var Content22 = TooltipContent;
 
 // src/components/Tooltip/Tooltip.tsx
-import { jsx as jsx30, jsxs as jsxs16 } from "react/jsx-runtime";
+import { jsx as jsx30, jsxs as jsxs17 } from "react/jsx-runtime";
 var Tooltip2 = ({
   content,
   children,
@@ -7094,7 +7108,7 @@ var Tooltip2 = ({
   side = "top",
   align = "center"
 }) => {
-  return /* @__PURE__ */ jsx30(Provider, { children: /* @__PURE__ */ jsxs16(Root32, { children: [
+  return /* @__PURE__ */ jsx30(Provider, { children: /* @__PURE__ */ jsxs17(Root32, { children: [
     /* @__PURE__ */ jsx30(Trigger3, { asChild: true, children }),
     /* @__PURE__ */ jsx30(Portal3, { children: /* @__PURE__ */ jsx30(
       Content22,
@@ -7113,7 +7127,7 @@ var Tooltip2 = ({
 
 // src/components/Popover/Popover.tsx
 import * as RadixPopover from "@radix-ui/react-popover";
-import { jsx as jsx31, jsxs as jsxs17 } from "react/jsx-runtime";
+import { jsx as jsx31, jsxs as jsxs18 } from "react/jsx-runtime";
 var Popover = ({
   isOpen,
   content,
@@ -7122,7 +7136,7 @@ var Popover = ({
   side = "bottom",
   align = "center"
 }) => {
-  return /* @__PURE__ */ jsxs17(RadixPopover.Root, { open: isOpen, children: [
+  return /* @__PURE__ */ jsxs18(RadixPopover.Root, { open: isOpen, children: [
     /* @__PURE__ */ jsx31(RadixPopover.Trigger, { asChild: true, children }),
     /* @__PURE__ */ jsx31(RadixPopover.Portal, { children: /* @__PURE__ */ jsx31(
       RadixPopover.Content,
@@ -7140,13 +7154,13 @@ var Popover = ({
 };
 
 // src/components/InfoCard/index.tsx
-import { jsx as jsx32, jsxs as jsxs18 } from "react/jsx-runtime";
+import { jsx as jsx32, jsxs as jsxs19 } from "react/jsx-runtime";
 var InfoCard = ({
   title,
   description,
   className
 }) => {
-  return /* @__PURE__ */ jsxs18(
+  return /* @__PURE__ */ jsxs19(
     "div",
     {
       className: `flex flex-col gap-2 items-center py-6 px-4 rounded-2xl bg-black-100 w-fit ${className}`,

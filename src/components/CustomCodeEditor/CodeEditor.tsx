@@ -6,7 +6,7 @@ import { hyperLinkExtension, hyperLinkStyle } from "./CodeEditorLink";
 import { linter, lintGutter } from "@codemirror/lint";
 import { EditorView } from "@codemirror/view";
 import { EditorState } from "@codemirror/state";
-
+import { Copy } from "lucide-react";
 import { markdown } from "@codemirror/lang-markdown";
 import { languages } from "@codemirror/language-data";
 
@@ -18,6 +18,7 @@ export interface CodeEditorProps {
   showFoldGutter?: boolean;
   disableLint?: boolean;
   language?: "json" | "markdown";
+  copy?: boolean;
 }
 
 export const hyperLink: Extension = [
@@ -36,6 +37,7 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
   showFoldGutter = true,
   disableLint = false,
   language = "json",
+  copy = false,
 }) => {
   const [mounted, setMounted] = useState(false);
   const [formattedValue, setFormattedValue] = useState(value);
@@ -100,17 +102,28 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
   }
 
   return (
-    <CodeMirror
-      value={formattedValue}
-      theme={githubLight}
-      extensions={extensions}
-      onChange={handleChange}
-      basicSetup={{
-        lineNumbers: showLineNumbers,
-        highlightActiveLine: !readOnly,
-        foldGutter: showFoldGutter,
-        tabSize: 2,
-      }}
-    />
+    <div className="relative">
+      {copy && (
+        <Copy
+          onClick={() => {
+            navigator.clipboard.writeText(formattedValue);
+          }}
+          strokeWidth={1.5}
+          className="z-10 absolute top-2 right-2 cursor-pointer text-black-600 hover:text-black-500 w-6 h-6"
+        />
+      )}
+      <CodeMirror
+        value={formattedValue}
+        theme={githubLight}
+        extensions={extensions}
+        onChange={handleChange}
+        basicSetup={{
+          lineNumbers: showLineNumbers,
+          highlightActiveLine: !readOnly,
+          foldGutter: showFoldGutter,
+          tabSize: 2,
+        }}
+      />
+    </div>
   );
 };
