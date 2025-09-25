@@ -189,6 +189,13 @@ declare const Popover: React$1.FC<PopoverProps>;
 
 declare const Gaffa: (props: SVGProps<SVGSVGElement>) => react_jsx_runtime.JSX.Element;
 
+interface InfoCardProps {
+    title: string;
+    description: string;
+    className?: string;
+}
+declare const InfoCard: FC<InfoCardProps>;
+
 declare const GitHubIcon: (props: SVGProps<SVGSVGElement>) => react_jsx_runtime.JSX.Element;
 
 declare const useBreakpoints: () => {
@@ -204,4 +211,4 @@ declare const useBreakpoints: () => {
     isDown2XL: boolean;
 };
 
-export { BlogCard, type BlogCardProps, Button, CATLink, CodeEditor, type CodeEditorProps, Drawer, type DrawerProps, GAFFA_THEME, Gaffa, GitHubIcon, Input, type InputProps, Popover, type PopoverProps, PoweredByGaffa, type PoweredByGaffaProps, Select, type SelectOption, type SelectProps, SideCard, type SideCardProps, Switch, type SwitchProps, Tabs, type TabsProps, Tooltip, type TooltipProps, hyperLink, useBreakpoints };
+export { BlogCard, type BlogCardProps, Button, CATLink, CodeEditor, type CodeEditorProps, Drawer, type DrawerProps, GAFFA_THEME, Gaffa, GitHubIcon, InfoCard, type InfoCardProps, Input, type InputProps, Popover, type PopoverProps, PoweredByGaffa, type PoweredByGaffaProps, Select, type SelectOption, type SelectProps, SideCard, type SideCardProps, Switch, type SwitchProps, Tabs, type TabsProps, Tooltip, type TooltipProps, hyperLink, useBreakpoints };

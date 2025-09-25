@@ -7139,6 +7139,25 @@ var Popover = ({
   ] });
 };
 
+// src/components/InfoCard/index.tsx
+import { jsx as jsx32, jsxs as jsxs18 } from "react/jsx-runtime";
+var InfoCard = ({
+  title,
+  description,
+  className
+}) => {
+  return /* @__PURE__ */ jsxs18(
+    "div",
+    {
+      className: `flex flex-col gap-2 items-center py-6 px-4 rounded-2xl bg-black-100 w-fit ${className}`,
+      children: [
+        /* @__PURE__ */ jsx32("h3", { className: "text-lg font-bold mb-2 text-accent-700 font-code", children: title }),
+        /* @__PURE__ */ jsx32("p", { className: "text-black-400", children: description })
+      ]
+    }
+  );
+};
+
 // src/index.ts
 export * from "lucide-react";
 import * as toast from "react-hot-toast";
@@ -7151,6 +7170,7 @@ export {
   GAFFA_THEME,
   Gaffa,
   GitHubIcon,
+  InfoCard,
   Input,
   Popover,
   PoweredByGaffa,

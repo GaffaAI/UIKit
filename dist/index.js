@@ -39,6 +39,7 @@ __export(index_exports, {
   GAFFA_THEME: () => GAFFA_THEME,
   Gaffa: () => Gaffa,
   GitHubIcon: () => GitHubIcon,
+  InfoCard: () => InfoCard,
   Input: () => Input,
   Popover: () => Popover,
   PoweredByGaffa: () => PoweredByGaffa,
@@ -7188,6 +7189,25 @@ var Popover = ({
   ] });
 };
 
+// src/components/InfoCard/index.tsx
+var import_jsx_runtime32 = require("react/jsx-runtime");
+var InfoCard = ({
+  title,
+  description,
+  className
+}) => {
+  return /* @__PURE__ */ (0, import_jsx_runtime32.jsxs)(
+    "div",
+    {
+      className: `flex flex-col gap-2 items-center py-6 px-4 rounded-2xl bg-black-100 w-fit ${className}`,
+      children: [
+        /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("h3", { className: "text-lg font-bold mb-2 text-accent-700 font-code", children: title }),
+        /* @__PURE__ */ (0, import_jsx_runtime32.jsx)("p", { className: "text-black-400", children: description })
+      ]
+    }
+  );
+};
+
 // src/index.ts
 __reExport(index_exports, require("lucide-react"), module.exports);
 var toast = __toESM(require("react-hot-toast"));
@@ -7201,6 +7221,7 @@ var toast = __toESM(require("react-hot-toast"));
   GAFFA_THEME,
   Gaffa,
   GitHubIcon,
+  InfoCard,
   Input,
   Popover,
   PoweredByGaffa,

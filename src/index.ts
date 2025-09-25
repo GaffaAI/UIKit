@@ -15,7 +15,7 @@ export * from "./components/Switch/Switch";
 export * from "./components/Tooltip/Tooltip";
 export * from "./components/Popover/Popover";
 export * from "./components/icons/Gaffa";
-
+export * from "./components/InfoCard";
 export * from "./components/icons/GitHub";
 export * from "./hooks/useBreakpoints";
 
