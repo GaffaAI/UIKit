@@ -139,7 +139,9 @@ interface BlogCardProps {
     link: {
         label: string;
         href: string;
+        className?: string;
     };
+    variant?: "default" | "column" | "row";
 }
 declare const BlogCard: React.FC<BlogCardProps>;
 

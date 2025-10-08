@@ -6,7 +6,8 @@ export interface BlogCardProps {
   description: string;
   image: string;
   className?: string;
-  link: { label: string; href: string };
+  link: { label: string; href: string; className?: string };
+  variant?: "default" | "column" | "row";
 }
 export const BlogCard: React.FC<BlogCardProps> = ({
   title,
@@ -14,18 +15,25 @@ export const BlogCard: React.FC<BlogCardProps> = ({
   image,
   className,
   link,
+  variant = "default",
 }) => {
   return (
     <div
       className={clsx(
-        "group flex flex-col rounded-2xl shadow-lg overflow-hidden p-3 md:py-4 md:px-6 gap-3 bg-gradient-secondary md:flex-row-reverse",
+        "group flex rounded-2xl shadow-lg overflow-hidden p-3 md:py-4 md:px-6 gap-3 bg-gradient-secondary ",
+        variant === "default" && "flex-col md:flex-row-reverse",
+        variant === "row" && "flex-row-reverse ",
+        variant === "column" && "flex-col",
         className,
       )}
     >
       <img
         src={image}
         alt={title}
-        className="w-full h-[198px] object-cover rounded-2xl md:w-[212px] md:h-[132px]"
+        className={clsx("w-full h-[198px] object-cover rounded-2xl ", {
+          "md:w-[212px] md:h-[132px]": variant === "default",
+          "w-[212px] h-[132px]": variant === "row",
+        })}
       />
 
       <div className="flex flex-col gap-4  flex-1">
@@ -38,7 +46,14 @@ export const BlogCard: React.FC<BlogCardProps> = ({
         <CATLink
           variant="primary"
           href={link.href}
-          className="w-full md:max-w-fit"
+          className={clsx(
+            "w-full",
+            {
+              "md:max-w-fit": variant === "default",
+              "max-w-fit": variant === "row",
+            },
+            link.className,
+          )}
           size="m"
         >
           {link.label}

@@ -1618,13 +1618,17 @@ var BlogCard = ({
   description,
   image,
   className,
-  link: link2
+  link: link2,
+  variant = "default"
 }) => {
   return /* @__PURE__ */ jsxs11(
     "div",
     {
       className: clsx_default(
-        "group flex flex-col rounded-2xl shadow-lg overflow-hidden p-3 md:py-4 md:px-6 gap-3 bg-gradient-secondary md:flex-row-reverse",
+        "group flex rounded-2xl shadow-lg overflow-hidden p-3 md:py-4 md:px-6 gap-3 bg-gradient-secondary ",
+        variant === "default" && "flex-col md:flex-row-reverse",
+        variant === "row" && "flex-row-reverse ",
+        variant === "column" && "flex-col",
         className
       ),
       children: [
@@ -1633,7 +1637,10 @@ var BlogCard = ({
           {
             src: image,
             alt: title,
-            className: "w-full h-[198px] object-cover rounded-2xl md:w-[212px] md:h-[132px]"
+            className: clsx_default("w-full h-[198px] object-cover rounded-2xl ", {
+              "md:w-[212px] md:h-[132px]": variant === "default",
+              "w-[212px] h-[132px]": variant === "row"
+            })
           }
         ),
         /* @__PURE__ */ jsxs11("div", { className: "flex flex-col gap-4  flex-1", children: [
@@ -1646,7 +1653,14 @@ var BlogCard = ({
             {
               variant: "primary",
               href: link2.href,
-              className: "w-full md:max-w-fit",
+              className: clsx_default(
+                "w-full",
+                {
+                  "md:max-w-fit": variant === "default",
+                  "max-w-fit": variant === "row"
+                },
+                link2.className
+              ),
               size: "m",
               children: link2.label
             }
