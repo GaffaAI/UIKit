@@ -1632,11 +1632,11 @@ var BlogCard = ({
         className
       ),
       children: [
-        /* @__PURE__ */ jsx17(
+        image && /* @__PURE__ */ jsx17(
           "img",
           {
             src: image,
-            alt: title,
+            alt: title || "Card-image",
             className: clsx_default("w-full h-[198px] object-cover rounded-2xl ", {
               "md:w-[212px] md:h-[132px]": variant === "default",
               "w-[212px] h-[132px]": variant === "row"
@@ -1645,10 +1645,10 @@ var BlogCard = ({
         ),
         /* @__PURE__ */ jsxs11("div", { className: "flex flex-col gap-4  flex-1", children: [
           /* @__PURE__ */ jsxs11("div", { className: "flex flex-col gap-2", children: [
-            /* @__PURE__ */ jsx17("h3", { className: "text-lg font-code font-semibold group-hover:text-accent-400 transition-colors", children: title }),
-            /* @__PURE__ */ jsx17("p", { className: "text-black-400 text-sm", children: description })
+            title && /* @__PURE__ */ jsx17("h3", { className: "text-lg font-code font-semibold group-hover:text-accent-400 transition-colors", children: title }),
+            description && /* @__PURE__ */ jsx17("p", { className: "text-black-400 text-sm", children: description })
           ] }),
-          /* @__PURE__ */ jsx17(
+          link2 && /* @__PURE__ */ jsx17(
             CATLink,
             {
               variant: "primary",

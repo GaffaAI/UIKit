@@ -132,11 +132,11 @@ interface InputProps extends React__default.InputHTMLAttributes<HTMLInputElement
 declare const Input: React__default.FC<InputProps>;
 
 interface BlogCardProps {
-    title: string;
-    description: string;
-    image: string;
+    title?: string;
+    description?: string;
+    image?: string;
     className?: string;
-    link: {
+    link?: {
         label: string;
         href: string;
         className?: string;

@@ -25,7 +25,7 @@ npm install github:GaffaAI/UIKit
 Import and use components in your React project:
 
 ```tsx
-import { Button, Input, BlogCard } from "@gaffaai/uilib";
+import { Button, Input, BlogCard } from "@gaffaai/uikit";
 
 function App() {
   return (
