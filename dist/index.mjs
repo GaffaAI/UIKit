@@ -3,7 +3,7 @@ var GAFFA_THEME = {
   extend: {
     backgroundImage: {
       "gradient-primary": "linear-gradient(135deg, #E6FAEE 0%, #ACEECA 100%)",
-      "gradient-secondary": "radial-gradient(circle at center, #ACEECA 0%, #FFFFFF 100%)"
+      "gradient-secondary": "radial-gradient(circle at center, #D4F7E2 0%, #FFFFFF 100%)"
     },
     colors: {
       accent: {
