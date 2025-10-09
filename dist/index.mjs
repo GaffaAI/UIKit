@@ -1637,9 +1637,10 @@ var BlogCard = ({
           {
             src: image,
             alt: title || "Card-image",
-            className: clsx_default("w-full h-[198px] object-cover rounded-2xl ", {
-              "md:w-[212px] md:h-[132px]": variant === "default",
-              "w-[212px] h-[132px]": variant === "row"
+            className: clsx_default(" object-cover rounded-2xl ", {
+              "w-full h-[198px] md:w-[212px] md:h-[132px]": variant === "default",
+              "w-[212px] h-[132px]": variant === "row",
+              "w-full h-[240px]": variant === "column"
             })
           }
         ),
